@@ -1,0 +1,77 @@
+.users_searching_page{
+    width: 100%;
+    min-height: 100vh;
+    background: url(./photo-1560967562-4cc092c1d738.jpg) center center/cover no-repeat;
+}
+.inputttt{
+    background-color: #000;
+    color: white;
+    font-size: 20px;
+    padding: 2px;
+}
+
+    .search_people_loo{
+        background-color: rgba(204, 171, 171,0.8);
+        padding: 2px;
+        padding-top: 10px;
+        font-size: 20px;
+    }
+.users_lisst{
+    padding-top: 10px;
+    width: 50%;
+    min-height: 100vh;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: rgba($color: #fffdfd, $alpha: 0.5);
+}
+.yousers_item{
+    width: 80%;
+    min-height: 70px;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 3px 3px 2px 2px black;
+    text-decoration: none;
+}
+.user_image{
+    width: 14%;
+    overflow: hidden;
+    margin: 10px;
+    z-index: 2;
+}
+.users_inforrrr{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    span{
+        font-size: 20px;
+    }
+    
+}
+.user_namee,.user_lastt{
+    font-size: 20px;
+}
+.user_namee{
+    font-weight: 700;
+}
+.link_users_{
+    text-decoration: none;
+    color: black;
+}
+.dont_found_user{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5%;
+}
+@media (max-width: 700px) {
+    .user_image{
+        display: none;
+    }
+    
+ }

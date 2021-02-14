@@ -1,0 +1,30 @@
+.dont_fount{
+    color: rgb(2, 2, 2);
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20%;
+    height: 100%;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+}
+.user_backgrount{
+    max-width: 100%;
+    min-height: 100vh;
+    background: url(./photo-1599998372764-ac8cbb604f21.jpg)center center/cover no-repeat;
+    padding-left: 15%;
+}
+.chat_linkkk{
+    background-color:rgba($color: #fcf3f3, $alpha: 0.4);
+    height: 100%;
+    margin-top: 10%;
+    font-size: 40px;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.dfv{
+    display: flex;
+    flex-wrap: wrap;
+}

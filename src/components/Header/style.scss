@@ -1,0 +1,170 @@
+.authContainer{
+    
+    margin-bottom: -10px;
+}
+.logoimage{
+    background-color:none;
+    font-size: 30px;
+}
+.logooo{
+   width: 160px;
+   height: 70px;
+}
+.header_profile_link{
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+   
+}
+.signup_{
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+.profile_picture_signup{
+    color: black;
+    font-size: 17px;
+    margin: 4px;
+}
+.meniu__icon{
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 7px;
+    transition: all 3s;
+    z-index: 200;
+    span{
+        width: 100%;
+        height: 2px;
+        margin-top: 5px;
+        background-color: #fff;
+        transition: transform 2s;
+        
+    }
+    
+}
+.activeee{
+    span{
+        margin-top: 7px;
+        &:nth-last-child(2)
+        {
+            opacity: 1;
+            transform: rotate(45deg) translate(-2px, -1px);
+            
+        }
+        &:nth-child(1)
+        {
+            opacity: 1;
+            transform: rotate(-45deg) translate(-2px, -1px);
+            
+        }
+        &:nth-child(3)
+        {
+            opacity: 0;
+            
+            
+        }
+    }
+    
+}
+.burgermenu{
+    position: fixed;
+    transition: 3s all;
+    left: 0;
+    top: 0;
+    width: 60%;
+    min-height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    z-index: 200000;
+}
+.logoo{
+    width: 70%;
+}
+.burger_search{
+    width: 70%;
+    background-color:rgba($color: #fff9f9, $alpha: 1);
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.burger_input{
+    flex: 1 1 auto;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    width: 70%;
+}
+.menuheater_linkkkkk{
+    padding: 5px;
+}
+.nav_linkkkkkkk{
+    color: white;
+    width: 50%;
+    text-align: center;
+    margin: 0 10%;
+    padding: 10px;
+    margin-top: 5px;
+    &:hover{
+        background-color: #fff;
+        
+        >.nav_linkkk{
+            color: black;
+        }
+    }
+    
+}
+.nav_linkkk{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+.signin_first_name{
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+    height: 20px;
+    background-color:rgba($color: #000000, $alpha: 1.0);
+    color: white;
+    font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+        .logooo{
+            display: none;
+        }
+}
+@media (max-width: 1000px) {
+    .searchInputContainer,.for_css,.all_chatrooms_s{
+        display: none;
+    }
+    
+}
+@media (max-width: 700px) {
+    .nav_linkkk{
+        font-size: 20px;
+    }
+    .single_room_cont{
+        width: 90%;
+    }
+    .leftspace{
+        display: none;
+    }
+    .signin_first_name{
+        width: 50%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .meniu__icon,.burgermenu{
+        display: none;
+    }
+    .for_nonnt{
+        display: none;
+        visibility: hidden;
+        z-index: -20000;
+    }
+}

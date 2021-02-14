@@ -1,0 +1,232 @@
+.productDescriptionContainer{
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.verticalImageStack{
+    width: 67px;
+    display: flex;
+    flex-direction: column;
+}
+.thumbnail{
+    width: 63px;
+    height: 63px;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    text-align: center;
+}
+.thumbnail img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.thumbnail.active{
+    border: 2px solid #2874f0;
+}
+.productDescContainer{
+   min-width: 485px;
+}
+.productDescImgContainer{
+    width: 70%;
+    
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+}
+.productDescImgContainer > img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.breed ul{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.breed ul li{
+    list-style: none;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+.breed ul li a{
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 10px;
+}
+.productDetails{
+    margin: 0 10px;
+    color: white;
+}
+.productDetails .productTitle{
+    font-size: 18px;
+    color: #212121;
+    font-weight: 400;
+}
+.ratingCount{
+    display: inline-block;
+    background: #388e3c;
+    color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+.ratingNumbersReviews{
+    font-size: 12px;
+    color: #777;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 10px;
+}
+.extraOffer, .discount{
+    color: #388e3c;
+    font-size: 12px;
+    margin: 10px 0px;
+    font-weight: 600;
+}
+.priceContainer{
+    align-items: center;
+}
+.price{
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+.productDescContainer{
+    color: white;
+}
+.productTitle{
+    color: #fff;
+
+}
+.comentpicter_wraper{
+    width: 60px;
+    height:60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.coment_wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.coment_descr{
+    color: #fff;
+    font-size: 16px;
+    margin-top: 7px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    
+}
+.comment_input{
+    height: 40px;
+    width: 50%;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+}
+.comments_form{
+    display: flex; 
+}
+.coment_btn{
+    width: 20%;
+    border-radius: 7px;
+    color: #ffffff;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    transition: 1s;
+    margin-left: 20px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow:inset 0 0  8px rgb(26, 13, 13);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 96%, rgba(10,8,56,0.9500175070028011) 100%);  
+     &:hover{
+      
+        color: #000000;
+        font-weight: 700;
+
+    }
+}
+.coment_descr >span{
+        padding: 1px 5px;
+        margin-left: 30px;
+        background-color: rgba(77, 67, 67,0.6);
+        color: rgb(252, 240, 240);
+        text-align: left;
+        text-overflow: ellipsis;
+}
+.coment_wraper{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    background-color:rgba($color: #ffffff, $alpha: 0.4);
+}
+.coments_wraper{
+   border: 2px solid #ffffff;
+   padding: 0 20px 20px 0;
+   max-width: 900px;
+text-overflow: ellipsis;
+}
+.zoomi_image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.coment_descr{
+    word-wrap: break-word;
+}
+.loaderr{
+    border-color: black;
+}
+@media (max-width: 1000px) {
+    
+    .productDescriptionContainer{
+        flex-direction: column;
+    }
+    .comment_input{
+        width: 50%;
+    }
+ }
+
+ @media (max-width: 700px) {
+    
+    .flex_colum{
+        flex-direction: column;
+    }
+    .coment_descr{
+        display: flex;
+        flex-direction: column;
+       
+    }
+    .productDescImgContainer{
+        width: 60%;
+    }
+    .productDescContainer{
+        min-width: 250px;
+     }
+     .coment_descr{
+         padding: 0;
+         margin: 0;
+         >.menuheater_link{
+             width: 100%;
+         }
+     }
+     .coment_descr >span{
+         margin: 0;
+         margin-top: 4px;
+     }
+     .comentpicter_wraper{
+         margin: 2px;
+         padding: 0;
+     }
+ }
