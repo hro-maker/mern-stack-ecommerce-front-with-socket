@@ -1,20 +1,25 @@
 .menuHeader{
-    height: 40px;
-    width: 100%;
+    min-height: 40px;
+    max-width: 100%;
    
     border-bottom: 1px solid #ececec;
     box-shadow: 0 7px 7px -2px rgb(63, 54, 54);
     color: white;
+    display: flex;
 }
 .menuHeader ul{
     padding: 0;
     margin: 0;
     list-style: none;
+    max-width:100%;
+    
 }
 .menuHeader > ul{
     margin: 0 50px;
     display: flex;
     position: relative;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
 }
 .menuHeader > ul > li > span{
     line-height: 40px;
@@ -25,9 +30,22 @@
     font-weight: bold;
     font-family: sans-serif;
     color: white;
+    box-shadow: 1px 1px  2px 2px white;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .menuHeader > ul > li > span:hover{
     color: #d4dceb;
+}
+.categor_show_hide{
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: 30px;
+    position: relative;
+}
+.for_tooltipsss{
+    bottom: 10px;
+    left: 10px;
 }
 .menuHeader > ul > li > ul{
     position: absolute;
@@ -62,3 +80,14 @@
     margin: 5px 0;
     font-size: 19px;
 }   
+// .menuHeader{
+//     overflow-x: scroll;
+// }
+// .menuHeader>ul {
+//     overflow: unset;
+// }
+@media (max-width: 700px) {
+    .menuHeader{
+        flex-direction: column;
+    }
+}

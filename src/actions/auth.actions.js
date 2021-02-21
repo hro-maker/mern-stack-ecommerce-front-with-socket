@@ -98,21 +98,16 @@ export const signup = (user) => {
             user,
           },
         });
-        return res
+        return true
       } else {
         const { error } = res.data;
        
         dispatch({ type: autConstants.SIGNUP_FAILURE, payload: { error } });
-        return error
+        return false
       }
     } catch (error) {
-     
-      return error
-      // const { data } = error.response;
-      // dispatch({
-      //   type: autConstants.SIGNUP_FAILURE,
-      //   payload: { error: data.error },
-      // });
+      dispatch({ type: autConstants.SIGNUP_FAILURE, payload: { error } });
+      return false
     }
   };
 };

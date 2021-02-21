@@ -24,6 +24,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RiMessengerFill } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
+import { autConstants } from "../../actions/constans";
 
 /**
  * @author
@@ -54,8 +55,6 @@ const Header = (props) => {
     form.append("email", email);
     form.append("password", password);
     form.append("profilePicture", profilePicture);
-    // const user = { , , profilePicture };
-   
     if(!email.includes('@')){
       notify("valid email required")
       return;
@@ -76,11 +75,17 @@ const Header = (props) => {
       notify("password minimal length is 6")
       return;
     }
-
-    dispatch(_signup(form)).then((res)=>{
-      notify("user created successfuly")
+  
+        dispatch(_signup(form))
+    //     .then(()=>{
+             
+      
+    // //  if(auth.message.length > 0){
+    // //       notify(auth.message)
+    // //  }
+      
  
-    })
+    // })
   };
 
   const userLogin = () => {
@@ -179,11 +184,17 @@ const Header = (props) => {
     setprofileImage(e.target.files[0]);
   };
 
+useEffect(() => {
+  if(auth.signup){
+    notify('signup succes')
+    // dispatch({type:autConstants.SIGNUP_SETBOOLEAN})
+  }
 
+}, [auth.signup]);
  
   return (
     <div className="header">
-          <div style={ forburg?{transform: `translateX(${-100}%)`}:{transform: `translateX(${0}%)`}} className="burgermenu">
+          {auth.authenticate && <div style={ forburg?{transform: `translateX(${-100}%)`}:{transform: `translateX(${0}%)`}} className="burgermenu">
                 <div className="burgermenuwraper">
                   <Link to="/">
                   <img className="logoo" src={shlyans} alt=""/>
@@ -229,7 +240,7 @@ const Header = (props) => {
                       </div>
                   </div>
                 </div>
-          </div>
+          </div>}
       <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
         <div className="authContainer">
           <div className="row">
@@ -239,7 +250,7 @@ const Header = (props) => {
             </div>
             <div className="rightspace">
               <div className="loginInputContainer">
-                {auth.error && notify(auth.error)}
+                {/* {auth.error && notify(auth.error)} */}
                 {signup && (
                   <input
                     className="signin_first_name"
@@ -304,13 +315,19 @@ const Header = (props) => {
       <ToastContainer />
       <div className="subHeader">
       
-        <div className="logo">
+        <div className="logoo">
           <Link to="/">
             <img src={shlyans} className="logooo" alt="" />
           </Link>
           
         </div>
        
+       {!auth.authenticate &&  <div className="logood">
+          <Link to="/">
+            <img src={shlyans} className="logoooo" alt="" />
+          </Link>
+          
+        </div>}
         <div
           style={{
             padding: "0 10px",

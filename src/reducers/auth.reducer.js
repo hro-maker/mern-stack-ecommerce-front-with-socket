@@ -13,7 +13,8 @@ const initialState={
     loading:false,
     error:null,
     message:'',
-    users:[]
+    users:[],
+    signup:null
 }
 
 const authReducer= (state=initialState,action)=>{
@@ -64,12 +65,19 @@ const authReducer= (state=initialState,action)=>{
           case autConstants.SIGNUP_SUCCESS:
             return state={
               ...state,
+              signup:true,
               message:"signup success"
             }
+          case autConstants.SIGNUP_SETBOOLEAN:
+            return state ={
+              ...state,
+              signup:false
+            }  
           case autConstants.SIGNUP_FAILURE:
           return  state = {
               ...state,
               error: action.payload.error,
+              signup:false,
               message:"signup falure"
             };
            

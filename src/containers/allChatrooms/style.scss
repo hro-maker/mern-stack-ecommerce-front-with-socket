@@ -3,6 +3,7 @@
     min-height: 100vh;
     background: url('./pexels-photo-1563356.jpeg')center center/cover no-repeat;
     z-index: -6;
+    overflow-y: scroll;
 }
 .single_room_cont{
     width: 100%;
@@ -17,6 +18,7 @@
     width: 40%;
     margin: 0 auto;
     padding-top: 4%;
+    min-height: 100%;
 }
 .user_fullname{
     font-size: 20px;

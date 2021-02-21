@@ -21,6 +21,7 @@ import { chatapi } from './urlConfig';
 import { getallchatrooms } from './actions/chatroom.action';
 import AllChatrooms from './containers/allChatrooms/index';
 import SearchUsers from './containers/searchusers/index';
+import Loader from './components/loader/index';
 
 
 
@@ -75,7 +76,7 @@ function App() {
     dispatch(updateCart())
     
   },[auth.authenticate]);
-  
+ 
   return (
     <Router>
       <Switch>
@@ -92,6 +93,7 @@ function App() {
       <Route path="/order_details/:orderId" component={OrderDetailsPage} />
       <Route path='/:productSlug/:productId/p' component={ProductDetailPage } />
       <Route path='/:slug' component={ProductListPage} />
+      <Route  component={HomePage} />
        </Switch>
     </Router>
    

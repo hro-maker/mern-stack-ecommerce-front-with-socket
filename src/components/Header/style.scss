@@ -6,7 +6,7 @@
     background-color:none;
     font-size: 30px;
 }
-.logooo{
+.logooo,.logoooo{
    width: 160px;
    height: 70px;
 }
@@ -65,8 +65,6 @@
         &:nth-child(3)
         {
             opacity: 0;
-            
-            
         }
     }
     
@@ -81,8 +79,14 @@
     background-color: rgba($color: #000000, $alpha: 0.7);
     z-index: 200000;
 }
-.logoo{
+.logoo,.logood{
     width: 70%;
+}
+.logood{
+    display: none;
+}
+.logoddd{
+    background-color: #fff;
 }
 .burger_search{
     width: 70%;
@@ -136,10 +140,14 @@
         .logooo{
             display: none;
         }
+        
 }
 @media (max-width: 1000px) {
     .searchInputContainer,.for_css,.all_chatrooms_s{
         display: none;
+    }
+    .logood{
+        display: block;
     }
     
 }
@@ -156,10 +164,15 @@
     .signin_first_name{
         width: 50%;
     }
+    .logoooo{
+        width: 30px;
+        height: 60px;
+    }
+    
 }
 
 @media (min-width: 1000px) {
-    .meniu__icon,.burgermenu{
+    .meniu__icon,.burgermenu,.after_hiden_main{
         display: none;
     }
     .for_nonnt{
