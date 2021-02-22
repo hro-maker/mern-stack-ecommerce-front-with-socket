@@ -272,7 +272,7 @@ useEffect(() => {
                 {signup && <div style={{textAlign:"center"}} className="profile_picture_signup">profile picture</div>}
                 {signup && (
                   <input
-                  className="signin_first_name"
+                  className="signin_first_name signin_first_name_file"
                     type="file"
                     name="profileImage"
                     onChange={hendlprofileImage}

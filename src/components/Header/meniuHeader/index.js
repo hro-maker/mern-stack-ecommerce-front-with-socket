@@ -43,7 +43,7 @@ const Menuheader = (props) => {
           )}
 
           {category.children.length > 0 ? (
-            <ul>{renderCategories(category.children)}</ul>
+            <ul >{renderCategories(category.children)}</ul>
           ) : null}
         </li>
       );
@@ -53,7 +53,7 @@ const Menuheader = (props) => {
   return (
     <div className="menuHeader">
       <ReactTooltip />
-      {forcateg && <ul>
+      {forcateg && <ul >
         {category.categories.length > 0
           ? renderCategories(category.categories)
           : null}

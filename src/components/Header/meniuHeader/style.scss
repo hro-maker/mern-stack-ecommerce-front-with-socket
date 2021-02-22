@@ -1,85 +1,102 @@
-.menuHeader{
-    min-height: 40px;
-    max-width: 100%;
-   
-    border-bottom: 1px solid #ececec;
-    box-shadow: 0 7px 7px -2px rgb(63, 54, 54);
-    color: white;
-    display: flex;
+.menuHeader {
+  min-height: 40px;
+  max-width: 100%;
+
+  border-bottom: 1px solid #ececec;
+  box-shadow: 0 7px 7px -2px rgb(63, 54, 54);
+  color: white;
+  display: flex;
+  background: rgb(235,235,234);
+background: linear-gradient(90deg, rgba(235,235,234,1) 0%, rgba(92,92,139,0.7819502801120448) 0%, rgba(48,47,37,0.8631827731092436) 100%, rgba(47,165,247,0.9668242296918768) 100%, rgba(200,219,232,0.9069248338870431) 100%);
 }
-.menuHeader ul{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    max-width:100%;
-    
+.menuHeader ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: 100%;
 }
-.menuHeader > ul{
-    margin: 0 50px;
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-    flex: 1 1 auto;
+.menuHeader > ul {
+  margin: 0 50px;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
 }
-.menuHeader > ul > li > span{
-    line-height: 40px;
-    display: block;
-    margin: 0 20px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: sans-serif;
-    color: white;
-    box-shadow: 1px 1px  2px 2px white;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.menuHeader > ul > li > span {
+  line-height: 40px;
+  display: block;
+  margin: 0 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: white;
+  box-shadow: 1px 1px 2px 2px white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
 }
-.menuHeader > ul > li > span:hover{
-    color: #d4dceb;
+.menuHeader > ul > li > span:hover {
+  color: #d4dceb;
+  background-color: rgb(165, 37, 37);
 }
-.categor_show_hide{
-    cursor: pointer;
-    font-size: 30px;
-    margin-left: 30px;
-    position: relative;
+.categor_show_hide {
+  cursor: pointer;
+  font-size: 30px;
+  margin-left: 30px;
+  position: relative;
 }
-.for_tooltipsss{
-    bottom: 10px;
-    left: 10px;
+.for_tooltipsss {
+  bottom: 10px;
+  left: 10px;
 }
-.menuHeader > ul > li > ul{
-    position: absolute;
-    left: 0;
-    padding: 0 20px;
-    background: #fff;
-    right: 0;
-    display: none;
-    border: 1px solid #eee;
-    box-shadow: 0 2px 2px -2px #333;
-    z-index: 1;
+.menuHeader > ul > li > ul {
+  position: absolute;
+  left: 0;
+  padding: 0 20px;
+  background: rgb(235,235,234);
+background: linear-gradient(90deg, rgba(235,235,234,1) 0%, rgba(16,26,37,0.7847514005602241) 0%, rgba(48,47,37,0.8631827731092436) 100%, rgba(47,165,247,0.9668242296918768) 100%, rgba(200,219,232,0.9069248338870431) 100%);
+  right: 0;
+  display: none;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px -2px #333;
+  z-index: 1;
 }
-.menuHeader > ul > li:hover ul{
-    display: block;
+.menuHeader > ul > li:hover ul {
+  display: block;
+  color: black;
+}
+.menuHeader > ul > li > ul > li {
+  float: left;
+  min-width: 200px;
+}
+.menuHeader > ul > li > ul > li > a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(15, 2, 2);
+  margin: 10px 0;
+  display: block;
+}
+.menuHeader > ul > li > ul > li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  margin: 5px 0;
+  font-size: 19px;
+}
+.menuheater_link {
+  padding: 7px;
+  background-color: rgb(20, 19, 19);
+    border-radius: 5px;
+    margin-right: 10px;
+  &:hover {
+    background-color: rgb(207, 186, 186);
     color: black;
+  }
 }
-.menuHeader > ul > li > ul > li{
-    float: left;
-    min-width: 200px;
-}
-.menuHeader > ul > li > ul > li > a{
-    text-decoration: none;
-    font-weight: bold;
-    color: rgb(15, 2, 2);
-    margin: 10px 0;
-    display: block;
-}
-.menuHeader > ul > li > ul > li a{
-    text-decoration: none;
-    color: black;
-    display: block;
-    margin: 5px 0;
-    font-size: 19px;
-}   
 // .menuHeader{
 //     overflow-x: scroll;
 // }
@@ -87,7 +104,7 @@
 //     overflow: unset;
 // }
 @media (max-width: 700px) {
-    .menuHeader{
-        flex-direction: column;
-    }
+  .menuHeader {
+    flex-direction: column;
+  }
 }

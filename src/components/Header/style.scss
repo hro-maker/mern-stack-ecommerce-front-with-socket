@@ -129,11 +129,22 @@
 .signin_first_name{
     width: 300px;
     display: block;
-    margin: 0 auto;
     height: 20px;
     background-color:rgba($color: #000000, $alpha: 1.0);
     color: white;
     font-weight: 700;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.signin_first_name_file{
+    background-color: rgb(14, 13, 13);
+  
+    margin: 0 auto;
+    margin-bottom: 5px;
+    cursor: pointer;
+    
 }
 .for_css_headerr{
     display: flex;
