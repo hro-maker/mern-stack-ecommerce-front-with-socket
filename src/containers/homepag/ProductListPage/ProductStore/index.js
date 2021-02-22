@@ -24,7 +24,7 @@ const ProductStore = (props) => {
   }, []);
 
   return (
-    <>
+    <div className="product_store_wrapp">
       {Object.keys(product.productsByPrice).length > 0 &&
         Object.keys(product.productsByPrice).map((key, index) => {
           return (
@@ -88,7 +88,7 @@ const ProductStore = (props) => {
             )
           );
         })}
-    </>
+    </div>
   );
 };
 

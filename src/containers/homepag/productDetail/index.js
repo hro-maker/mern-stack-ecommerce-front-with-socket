@@ -149,8 +149,9 @@ let sum=0,rating=0
     <Layout>
       <ToastContainer />
   
-      <div className="productDescriptionContainer">
-        <div className="flexRow">
+      <div className="productDescriptionContainer for_back_descr">
+       <div className="product_subcontainer_for_bc">
+       <div className="flexRow">
           <div className="verticalImageStack">
             {product.productDetails.productPictures.map((thumb, index) => (
               <div className="thumbnail" onClick={() => setslideIndex(index)}>
@@ -286,7 +287,7 @@ let sum=0,rating=0
                   Add
                 </button>
               </form>
-              <h4 style={{ textAlign: "center" }}>Coments</h4>
+              <h4 style={{ textAlign: "center",fontSize:30 }}>Coments</h4>
               <div
                 className="coments_wraper"
                 style={{
@@ -324,7 +325,7 @@ let sum=0,rating=0
                       <div >
                         {element.userName && (
                           <div className="coment_descr">
-                            <Link className="menuheater_link"
+                            <Link className="menuheater_linkkk"
                                   to={`/profiles/user/${element.userId}/u`}
                                 >
                                    {element.userName}
@@ -348,6 +349,7 @@ let sum=0,rating=0
             </div>
           </div>
         </div>
+       </div>
       </div>
     </Layout>
   );
