@@ -122,7 +122,7 @@ const Header = (props) => {
 
   const renderLoggedInMenu = () => {
     return (
-      <div className="for_css">
+      <div className="for_css for_css_headerr">
             <DropdownMenu
         menu={<a className="fullName">{auth.user.fullName}</a>}
         menus={[
@@ -206,7 +206,7 @@ useEffect(() => {
                       <input
                         value={search}
                         onChange={(e)=>setsearch(e.target.value)}
-                        className="burger_input"
+                        className="burger_input header_input_se"
                         placeholder={"search for products, brands and more"}
                       />
                       <div className="">
