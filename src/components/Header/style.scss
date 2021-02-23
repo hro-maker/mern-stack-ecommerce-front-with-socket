@@ -185,6 +185,12 @@
         width: 30px;
         height: 60px;
     }
+    .row{
+        min-width: 400px;
+    }
+    .materialButton{
+            width: 70%;
+    }
     
 }
 
@@ -197,4 +203,10 @@
         visibility: hidden;
         z-index: -20000;
     }
+}
+@media (max-width: 500px) {
+        .row{
+            min-width: 250px;
+        }
+        
 }

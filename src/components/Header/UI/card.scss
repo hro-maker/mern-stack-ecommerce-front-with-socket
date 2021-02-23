@@ -1,7 +1,9 @@
 .cardheader{
-    // background-color: black;
+    background-color:rgba($color: #f8f6f6, $alpha: 0.6);
     color: rgb(0, 0, 0);
     box-shadow: 4px 4px 4px white;
+    font-size: 20px;
+    font-weight: 700;
 }
 .card{
     display: flex;

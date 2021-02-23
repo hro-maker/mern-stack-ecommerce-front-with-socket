@@ -12,9 +12,10 @@
     align-items: center;
 }
 .modalContainer{
-    min-width: 400px;
     max-width: 90%;
-    min-height: 200px;
+   
+   
+    // min-height: 200px;
     max-height: 90vh;
     background-color: rgba($color: #000000, $alpha: 1.0);
     background: rgb(235,235,234);
@@ -23,11 +24,12 @@ background: linear-gradient(90deg, rgba(235,235,234,1) 0%, rgba(11,56,101,1) 0%,
     margin: 0 auto;
     overflow-x: hidden;
     opacity: 10;
+    width: 90%;
 }
 .modalClose{
     position: absolute;
     color: #fff;
-    right: 15px;
+    right: -5px;
     font-size: 20px;
 }
 

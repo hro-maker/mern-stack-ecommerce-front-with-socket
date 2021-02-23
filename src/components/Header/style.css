@@ -108,11 +108,11 @@
 
 .authContainer{
   color: #212121;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border-radius: 2px;
   height: 528px;
   max-width: 52%;
-  min-width: 650px;
+  /* min-width: 650px; */
 }
 .row{
   width: 100%;
@@ -141,6 +141,7 @@
   flex: 1;
   flex-direction: column;
   align-items: center;
+  
 }
 .header{
   width: 100%;
