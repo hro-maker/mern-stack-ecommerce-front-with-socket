@@ -210,7 +210,7 @@ text-overflow: ellipsis;
 }
 @media (max-width: 1000px) {
     
-    .productDescriptionContainer{
+    .productDescriptionContainer,.product_subcontainer_for_bc{
         flex-direction: column;
     }
     .comment_input{
