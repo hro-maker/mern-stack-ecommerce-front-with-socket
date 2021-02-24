@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import getparams from './../../../../utils/getparams';
 import {getproductPage} from '../../../../actions/product.action'
 import Card from './../../../../components/Header/UI/Card';
+import { Helmet } from 'react-helmet';
 /**
 * @author
 * @function ProductPage
@@ -17,7 +18,7 @@ const ProductPage = (props) => {
 
     useEffect(() => {
         const params = getparams(props.location.search);
-       
+       console.log(params)
         const payload = {
             params
         }
@@ -27,6 +28,9 @@ const ProductPage = (props) => {
 
     return (
         <div style={{ margin: '0 10px' }}>
+            <Helmet>
+        <title> reclam page </title>
+             </Helmet> 
             <h3>{page.title}</h3>
             <Carousel
                 autoPlay
@@ -38,13 +42,13 @@ const ProductPage = (props) => {
             >
                 {
                     page.banners && page.banners.map((banner, index) => 
-                        <a 
+                        <div 
                             key={index}
                             style={{ display: 'block' }}
-                            href={banner.navigateTo}
+                            
                         >
                             <img src={banner.img} alt="" />
-                        </a>
+                        </div>
                     )
                 }
             </Carousel>

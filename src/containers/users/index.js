@@ -7,6 +7,7 @@ import plac from './plac.png'
 import './style.scss'
 import { Link, Redirect } from 'react-router-dom';
 import { AiFillMessage, AiOutlineArrowRight} from "react-icons/ai";
+import { Helmet } from 'react-helmet';
 /**
 * @author
 * @function User
@@ -24,9 +25,12 @@ const User = (props) => {
      }
    }
    
-   console.log(user);
+  
   return(
     <Layout>
+      {user && <Helmet>
+        <title> {user && user.firstName}</title>
+             </Helmet> }
     <div style={{color:"white",fontSize:"20px"}} className=" user_backgrount">
         {user ? <div className="df dfv">
            {user && user.profilePicture ? <Zoom>

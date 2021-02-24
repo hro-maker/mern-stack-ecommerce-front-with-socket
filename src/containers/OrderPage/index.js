@@ -8,6 +8,7 @@ import "./style.scss";
 import Card from './../../components/Header/UI/Card';
 import Layout from './../../components/Header/Layout/index';
 import { Breed } from "../../components/Header/MaterialUi";
+import { Helmet } from 'react-helmet';
 
 /**
  * @author
@@ -35,6 +36,9 @@ const OrderPage = (props) => {
     
   return (
     <Layout>
+       <Helmet>
+        <title> All orders </title>
+             </Helmet> 
       <div className="all_orders_wraper" >
         <Breed
           breed={[

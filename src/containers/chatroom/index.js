@@ -13,6 +13,7 @@ import Picker from 'emoji-picker-react';
 import { GrEmoji } from "react-icons/gr";
 import io from 'socket.io-client'
 import { chatapi } from './../../urlConfig';
+import { Helmet } from 'react-helmet';
 
 /**
  * @author
@@ -229,6 +230,7 @@ const onEmojiClick = (event, emojiObject) => {
  }
   return (
     <Layout>
+     
       <div className="chatcontainer_top" onClick={(e)=> closeemojipicker(e)} >
         
         <div  className="chat_wraper">
@@ -265,6 +267,15 @@ const onEmojiClick = (event, emojiObject) => {
                 ) : (
                   
                     <div className="yourmesage">
+                          <Helmet>
+                      <title> chat with {
+                        auth.users.find((al) => al._id == el.userId) &&
+                         
+                        auth.users.find((al) => al._id == el.userId)
+                          .firstName
+                        
+                        }</title>
+                          </Helmet> 
                       <div className="df dffff">
                     <div className="he">
                       <div>

@@ -9,6 +9,7 @@ import 'react-medium-image-zoom/dist/styles.css'
 import plac from './plac.png'
 import { Link } from "react-router-dom";
 import linnk from './32.png'
+import { Helmet } from 'react-helmet';
 /**
  * @author
  * @function Profile
@@ -19,6 +20,9 @@ const Profile = (props) => {
     const user=auth.user
   return (
     <Layout>
+       <Helmet>
+        <title> {user.firstName}</title>
+             </Helmet> 
       <div className="profile_bcc">
            <div className="df dfff">
              {user.profilePicture ? <Zoom>

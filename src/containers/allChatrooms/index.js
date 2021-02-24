@@ -6,6 +6,7 @@ import plac from './plac.png'
 import './style.scss'
 import { Link, Redirect } from 'react-router-dom';
 import { IoIosSearch } from 'react-icons/io';
+import {Helmet} from "react-helmet";
 
 
 /**
@@ -21,7 +22,9 @@ const AllChatrooms = (props) => {
     const [chatroomsi, setchatrooms] = useState({});
     const chatrooms=chat.chatrooms.filter(el => el.name.includes(auth.user._id))
   
-    
+    // useEffect(() => {
+      
+    // }, []);
         if(chatrooms.length===0){
             return (
                 <Layout>
@@ -61,9 +64,13 @@ const AllChatrooms = (props) => {
                 </Layout>
             )
         }
- 
+        
+         
   return(
       <Layout>
+            <Helmet>
+        <title>Chatrooms</title>
+             </Helmet> 
           <div className="chatrommcontain">
                     <div className="search_people">
                         <input value={usersearch} onChange={(e)=>setusersearch(e.target.value)} className="inputtttt" placeholder="search users" type="text"/>

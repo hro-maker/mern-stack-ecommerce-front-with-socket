@@ -13,6 +13,7 @@ import Card from "./../../../../components/Header/UI/Card";
  **/
 import "./style.scss";
 import { IoIosStar } from 'react-icons/io';
+import { Helmet } from 'react-helmet';
 const ProductStore = (props) => {
   const product = useSelector((state) => state.product);
   const priceRange = product.priceRange;
@@ -25,6 +26,9 @@ const ProductStore = (props) => {
 
   return (
     <div className="product_store_wrapp">
+      <Helmet>
+        <title> {props.match.params.slug.split("-")[0]} Store</title>
+             </Helmet> 
       {Object.keys(product.productsByPrice).length > 0 &&
         Object.keys(product.productsByPrice).map((key, index) => {
           return (

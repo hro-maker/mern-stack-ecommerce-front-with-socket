@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { addToCart, getCartItems, removeCartItem } from "../../../actions/cart.action";
 import { MaterialButton } from "../../../components/Header/MaterialUi";
 import PriceDetails from './../../../components/Header/PriceDetails/index';
+import { Helmet } from 'react-helmet';
 /**
  * @author       Hroooo
  * @function CardPage
@@ -66,6 +67,9 @@ const CartPage = (props) => {
   }
   return (
     <Layout>
+      <Helmet>
+        <title>My cart</title>
+             </Helmet> 
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
         <Card
           headerLeft={`My Cart`}

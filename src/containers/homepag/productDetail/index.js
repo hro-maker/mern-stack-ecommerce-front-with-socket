@@ -22,6 +22,7 @@ import ReactStars from "react-rating-stars-component";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 
 /**
@@ -148,7 +149,9 @@ let sum=0,rating=0
   return (
     <Layout>
       <ToastContainer />
-  
+      <Helmet>
+        <title> {product.productDetails.name} </title>
+             </Helmet> 
       <div className="productDescriptionContainer for_back_descr">
        <div className="product_subcontainer_for_bc">
        <div className="flexRow">

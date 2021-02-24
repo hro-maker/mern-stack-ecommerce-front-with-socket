@@ -9,6 +9,7 @@ import './style.scss'
 
 import { IoIosSearch, IoIosStar } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 /**
 * @author
@@ -34,6 +35,9 @@ const Search = (props) => {
     }
   return(
       <Layout>
+        <Helmet>
+        <title> search page</title>
+             </Helmet> 
           <Container>
                   
                         <div className="product_wraperr">

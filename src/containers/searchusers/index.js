@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { IoIosSearch } from "react-icons/io";
 import plac from './plac.png'
+import { Helmet } from 'react-helmet';
 /**
  * @author
  * @function SearchUsers
@@ -24,6 +25,9 @@ const SearchUsers = (props) => {
   console.log(users);
   return(
     <Layout>
+      <Helmet>
+        <title> Users search page</title>
+             </Helmet> 
         <div className="users_searching_page">
                     <div className="search_people">
                 <input value={usersearch} onChange={(e)=>setusersearch(e.target.value)} className="inputttt" placeholder="search users" type="text"/>

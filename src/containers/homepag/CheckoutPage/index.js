@@ -13,6 +13,7 @@ import PriceDetails from "../../../components/Header/PriceDetails";
 import { getCartItems } from "../../../actions/cart.action";
 import CartPage from "./../CartPage/index";
 import { login } from './../../../actions/auth.actions';
+import { Helmet } from 'react-helmet';
 
 /**
  * @author
@@ -205,6 +206,9 @@ const CheckoutPage = (props) => {
   }
   return (
     <Layout>
+      <Helmet>
+        <title> Chekout</title>
+             </Helmet> 
       <div className="cartContainer chekout_contain" style={{ alignItems: "flex-start" }}>
         <div className="checkoutContainer">
           

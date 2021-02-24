@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 import { getproductsbyslug } from './../../../../actions/product.action';
 import Card from './../../../../components/Header/UI/Card';
+import { Helmet } from 'react-helmet';
 
 
 /**
@@ -20,9 +21,12 @@ const ClothingAndAccessories = (props) => {
     const { match } = props;
     dispatch(getproductsbyslug(match.params.slug));
   }, []);
-
+  // {props.match.params.slug.split("-")[0]}
   return (
     <div style={{ padding: "10px" }}>
+      <Helmet>
+        <title> {props.match.params.slug.split("-")[0]} list </title>
+             </Helmet> 
       <Card
       className="card_header_clout"
         style={{

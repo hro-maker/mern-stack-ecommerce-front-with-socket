@@ -5,6 +5,7 @@ import { getOrder } from './../../actions/user.action';
 import Price from './../../components/Header/UI/Price';
 import Layout from './../../components/Header/Layout/index';
 import Card from './../../components/Header/UI/Card';
+import { Helmet } from 'react-helmet';
 
 /**
  * @author
@@ -58,6 +59,9 @@ const OrderDetailsPage = (props) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title> Order Details </title>
+             </Helmet> 
       <div
         className="order_detail_wraper"
         

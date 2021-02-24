@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { FaArrowRight } from "react-icons/fa";
+import { Helmet } from 'react-helmet';
 /**
  * @author
  * @function HomePage
@@ -36,10 +37,13 @@ const HomePage = (props) => {
   return (
     <div>
       <Layout>
+      <Helmet>
+        <title>Shlyans cart</title>
+             </Helmet> 
         <div className="wraper_home">
           <div className="home_subwraper">
             <div className="main_page_container">
-              {/* stayed */}
+            
               {productes.length > 0 && productes.length > 5
                 ? randomprod(productes).map((el, i) => (
                     <div key={i} className="main_page_item" style={{ color: "white" }}>
