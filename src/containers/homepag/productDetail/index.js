@@ -8,16 +8,13 @@ import {
 } from "./../../../actions/product.action";
 import { IoIosArrowForward, IoIosStar, IoMdCart } from "react-icons/io";
 import { BiDollar } from "react-icons/bi";
-import { AiFillThunderbolt } from "react-icons/ai";
 import "./style.scss";
 import { MaterialButton } from "../../../components/Header/MaterialUi";
-
 import { addToCart } from "./../../../actions/cart.action";
 import { useState } from "react";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import panda from "./p.jpg";
-import Loader from "./../../../components/loader/index";
 import ReactStars from "react-rating-stars-component";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
