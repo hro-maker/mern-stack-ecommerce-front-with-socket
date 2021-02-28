@@ -26,7 +26,7 @@ const Cart = (props) => {
       >
         {props.count}
       </span>
-      <IoIosCart />
+      <IoIosCart  className="cart_logo"/>
     </div>
   );
 };

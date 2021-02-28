@@ -30,3 +30,19 @@
     min-height: 100vh;
     background: url(../../../../images/pexels-photo-459225.jpeg);
 }
+.productContainer{
+        .productImgContainer{
+            >img{
+                transition: 2s all;
+            }}}
+.productContainer{
+    &:hover{
+        .productImgContainer{
+            >img{ 
+                transform: rotate(360deg);
+               
+            }
+            
+        }
+    }
+}

@@ -19,12 +19,12 @@ import { useSelector } from "react-redux";
 import Cart from "./UI/cart";
 import { FcBusinessman } from "react-icons/fc";
 import "./style.scss";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RiMessengerFill } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
-import { autConstants } from "../../actions/constans";
+import { BiDollar } from 'react-icons/bi';
 
 /**
  * @author
@@ -308,6 +308,7 @@ useEffect(() => {
                 
             
               </div>
+              <BiDollar className="animated_dolar"/>
             </div>
           </div>
         </div>
@@ -379,7 +380,7 @@ useEffect(() => {
               <span style={{ margin: "0 10px" }}>Cart</span>
             </a>
           </div>
-          {auth.authenticate && <Link className="all_chatrooms_s" style={{color:"white",fontSize:"20px"}} to="/allchatrooms"> <RiMessengerFill/> </Link>}
+          {auth.authenticate && <Link className="all_chatrooms_s" style={{color:"white",fontSize:"20px"}} to="/allchatrooms"> <RiMessengerFill className="messages_kofo"/> </Link>}
           {auth.authenticate && <div className={forburg?burger:burgerr}
             onClick={()=>setforburg(!forburg)}
             >

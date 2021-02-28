@@ -31,15 +31,17 @@ const Menuheader = (props) => {
     let categories = [];
     for (let category of categoryes) {
       categories.push(
+      
         <li key={category.name}>
-          {category.parentId ? (
+          { category.parentId ? (
             <Link className="menuheater_link"
               to={`/${category.slug}?cid=${category._id}&type=${category.type}`}
             >
-              {category.name}
+              { category.name}
             </Link>
           ) : (
-            <span> {category.name}</span>
+             <span> {category.name}</span>
+            
           )}
 
           {category.children.length > 0 ? (

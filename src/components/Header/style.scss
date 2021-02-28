@@ -137,6 +137,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
     letter-spacing: 1px;
+    min-width: 160px;
 }
 .signin_first_name_file{
     background-color: rgb(14, 13, 13);
@@ -144,7 +145,7 @@
     margin: 0 auto;
     margin-bottom: 5px;
     cursor: pointer;
-    
+    min-width: 200px;
 }
 .for_css_headerr{
     display: flex;
@@ -152,6 +153,59 @@
 .header_input_se{
     width: 100%;
 }
+.animated_dolar{
+    font-size: 100px;
+    color: green;
+    font-weight: 700;
+    animation: dollarrr 2s infinite;
+}
+.cart_logo{
+    animation: cart 2s infinite;
+}
+.messages_kofo{
+        animation: message 2s infinite;
+}
+@keyframes dollarrr {
+    0% {
+      transform: scale(1);
+      color: green;
+    }
+  
+    50% {
+        color: yellow;
+        transform: rotateY(20deg)scale(1.4);
+        // transform: scale(1.4);
+        
+    }
+    100% {
+        transform: scale(1);
+      color: green;
+      }
+  }
+  @keyframes cart {
+    0% {
+      transform: rotateZ(30deg);
+    }
+    50% {
+        transform: rotateZ(0deg);
+        
+    }
+    100% {
+        transform: rotateZ(-20deg);
+      }
+  }
+  @keyframes message {
+    0% {
+      color: rgb(226, 191, 191);
+    }
+    50% {
+        color: rgb(138, 138, 170);
+        
+    }
+    100% {
+        color: white;
+      }
+  }
 
 @media (max-width: 1200px) {
         .logooo{
