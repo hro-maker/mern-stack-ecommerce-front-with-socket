@@ -74,6 +74,8 @@
     box-shadow: 2px 2px 6px 5px black;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,0,38,1) 99%, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%);
     &:hover{
+        animation: none;
+        background: url(./photo-1577378978997-46d853f732cf.jpg)center center/cover no-repeat;
         >.mainpage_item_link_m{
             >.product_informat_m{
                 transform: translateY(0%);
@@ -107,7 +109,7 @@
     justify-content: space-around;
 }
 .product_informat_m{
-    background-color:rgba($color: #fff5f5, $alpha: 0.7);
+    background-color:rgba($color: #fff5f5, $alpha: 0.5);
     text-align: center;
     position: absolute;
     // z-index: 20;
