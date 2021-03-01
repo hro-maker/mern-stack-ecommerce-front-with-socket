@@ -123,8 +123,8 @@
     text-align: center;
 }
 .buttoonnnnn{
-    background-color: #fff;
-    color:rgb(3, 7, 245) ;
+    background-color: rgb(39, 37, 37);
+    color:rgb(246, 246, 253) ;
     font-size: 23px;
     outline: none;
     border-radius:10px;
@@ -147,7 +147,9 @@
    }
 }
 @media (max-width: 900px) {
-   
+    .buttoonnnnn{
+            display: none;    
+    }
     .mymesage{
          width: 80%;
          margin-left: 20%;

@@ -81,14 +81,14 @@ const HomePage = (props) => {
                       </Link>
                     </div> */}
                         <div key={i} className="main_page_item_m" style={{ color: "white" }}>
-                         <Link to={`/${el.slug}/${el._id}/p`}>
+                         <>
                          {
                           el.productPictures.length > 0 &&  <div className="home_page_images_wraper">
                           <img className="mainpage_item_image_m" src={el.productPictures[0].img} alt=""/>
                           <img className="mainpage_item_image_secnt_m" src={el.productPictures[el.productPictures.length - 1].img} alt=""/>
                         </div>
                         }
-                         </Link>
+                         </>
                           
                       <Link className="mainpage_item_link_m" to={`/${el.slug}/${el._id}/p`} >
 
