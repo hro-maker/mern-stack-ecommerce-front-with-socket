@@ -344,7 +344,7 @@ useEffect(() => {
             <div className="searchIconContainer">
               <Link
                 className="menuheater_link"
-                to={`/products/search/${search}/p`}
+                to={ search.length > 0 ? `/products/search/${search}/p` : `#`}
               >
                 <IoIosSearch
                   style={{
@@ -375,10 +375,10 @@ useEffect(() => {
           
           
           <div>
-            <a href={`/cart`} className="cart">
+            <Link to={`/cart`} className="cart">
               <Cart count={Object.keys(cart.cartItems).length} />
               <span style={{ margin: "0 10px" }}>Cart</span>
-            </a>
+            </Link>
           </div>
           {auth.authenticate && <Link className="all_chatrooms_s" style={{color:"white",fontSize:"20px"}} to="/allchatrooms"> <RiMessengerFill className="messages_kofo"/> </Link>}
           {auth.authenticate && <div className={forburg?burger:burgerr}

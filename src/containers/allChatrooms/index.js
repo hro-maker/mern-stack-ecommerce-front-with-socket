@@ -75,7 +75,7 @@ const AllChatrooms = (props) => {
                     <div className="search_people">
                         <input value={usersearch} onChange={(e)=>setusersearch(e.target.value)} className="inputtttt" placeholder="search users" type="text"/>
                   
-                        <Link className="search_people_loop" to={`/users/search/${usersearch}/u`}> <IoIosSearch /> </Link>
+                        <Link className="search_people_loop" to={usersearch.length>0 ?`/users/search/${usersearch}/u` : `#`}> <IoIosSearch /> </Link>
                     
                     </div>
 
