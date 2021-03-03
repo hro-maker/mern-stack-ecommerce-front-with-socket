@@ -36,7 +36,7 @@ const ClothingAndAccessories = (props) => {
         }}
       >
         <div className="clout_wraper">
-        {product.products.map((product) => (
+        {product.products.length > 0 ? product.products.map((product) => (
           <div className="caContainer">
             <Link
               className="caImgContainer"
@@ -52,7 +52,7 @@ const ClothingAndAccessories = (props) => {
               </div>
             </div>
           </div>
-        ))}
+        )) : <div className="product_dont_found_cat">products dont found</div>}
         </div>
       </Card>
     </div>

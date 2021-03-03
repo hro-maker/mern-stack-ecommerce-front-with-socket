@@ -25,7 +25,24 @@ export const getallproducts =()=>{
     }
     
 }
-
+export const removecomentbyid = (payload) =>{
+    return async dispatch =>{
+          await axioss.post("/product/removecoment",{
+                    ...payload
+            })
+          
+            return 
+    }
+}
+export const likeComment = (payload) =>{
+    return async dispatch =>{
+       const res=   await axioss.post("/product/likecoment",{
+                    ...payload
+            })
+          console.log(res)
+            return 
+    }
+}
 export const getproductPage =(payload)=>{
     return async dispatch =>{
         try {
@@ -74,7 +91,7 @@ export const getproductPage =(payload)=>{
 export const addcoment =(payload)=>{
     return async dispatch =>{
        
-        const res = await axioss.post(`/product/addcoment`,{
+       await axioss.post(`/product/addcoment`,{
             ...payload
         })
       
@@ -84,7 +101,7 @@ export const adreting =(payload)=>{
   
     return async dispatch =>{
        
-        const res = await axioss.post(`/product/addretinc`,{
+        await axioss.post(`/product/addretinc`,{
             ...payload
         })
        

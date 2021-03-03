@@ -29,7 +29,7 @@ const ProductStore = (props) => {
       <Helmet>
         <title> {props.match.params.slug.split("-")[0]} Store</title>
              </Helmet> 
-      {Object.keys(product.productsByPrice).length > 0 &&
+      {Object.keys(product.productsByPrice).length > 0 ?
         Object.keys(product.productsByPrice).map((key, index) => {
           return (
             product.productsByPrice[key].length > 0 && (
@@ -91,7 +91,7 @@ const ProductStore = (props) => {
               </Card>
             )
           );
-        })}
+        }) : <div className="product_dont_found_cat">products dont found</div>}
     </div>
   );
 };

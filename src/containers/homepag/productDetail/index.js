@@ -5,6 +5,8 @@ import {
   getProductDetailById,
   addcoment as _addcoment,
   adreting,
+  removecomentbyid,
+  likeComment
 } from "./../../../actions/product.action";
 import { IoIosArrowForward, IoIosStar, IoMdCart } from "react-icons/io";
 import { BiDollar } from "react-icons/bi";
@@ -20,7 +22,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
-
+import { MdClear } from "react-icons/md";
+import { FaHeart} from "react-icons/fa";
 
 /**
  * @author
@@ -47,7 +50,7 @@ const ProductDetailsPage = (props) => {
     dispatch(getProductDetailById(payload));
     setloading(false)
   }, []);
-
+ 
   if (Object.keys(product.productDetails).length === 0) {
     return null;
   }
@@ -128,7 +131,6 @@ let sum=0,rating=0
      sum=product.productDetails.reviews.reduce((t,el)=>{
           return  t=t+el.review
     },0)
-   
   }else{
     sum=0;
     rating=0
@@ -142,6 +144,35 @@ let sum=0,rating=0
       Loaderrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
     </div>
   );
+}
+const removeComent =(comentId)=>{
+  const { productId } = props.match.params;
+  
+  const el={comentId,_id:productId}
+    dispatch(removecomentbyid(el)).then(()=>{
+      const payload = {
+        params: {
+          productId,
+        },
+      };
+      dispatch(getProductDetailById(payload));
+    })
+    
+}
+const likeComent =(comentId)=>{
+  const { productId } = props.match.params;
+
+  const el={comentId,_id:productId}
+  console.log(el)
+    dispatch(likeComment (el)).then(()=>{
+      const payload = {
+        params: {
+          productId,
+        },
+      };
+      dispatch(getProductDetailById(payload));
+    })
+    
 }
   return (
     <Layout>
@@ -296,6 +327,7 @@ let sum=0,rating=0
                 }}
               >
                 {product.productDetails.coments && product.productDetails.coments.length > 0?
+                  
                   product.productDetails.coments.map((element) => (
                     <div
                       className="coment_wraper"
@@ -340,7 +372,23 @@ let sum=0,rating=0
                           <div className="coment_descr">
                             {element.coment}{" "}
                             <span>time {formatDate(element.date)}</span>
+                            {auth.authenticate && auth.user._id === element.userId && 
+                              <div onClick={()=>removeComent(element._id)}>
+                              <MdClear className="delete_coment" />
+                              </div>
+                            
+                            }
+                            <div onClick={()=>likeComent(element._id)}>
+                                  <FaHeart className="like_coment"/>
+                                  <div className="likes_count">
+                                  {element.likes.length} 
+                                  </div>
+                            </div>
+                            
+                            
+                            
                           </div>
+                          // BsFillTrash2Fill
                         }
                       </div>
                     </div>

@@ -112,22 +112,34 @@ const HomePage = (props) => {
                                   </>
                   ))
                 : productes.map((el,i) => (
-                  <div key={i} className="main_page_item" style={{ color: "white" }}>
-                  <Link className="mainpage_item_link" to={`/${el.slug}/${el._id}/p`} >
+                  <div key={i} className="main_page_item_m" style={{ color: "white" }}>
+                         <>
+                         {
+                          el.productPictures.length > 0 &&  <div className="home_page_images_wraper">
+                          <img className="mainpage_item_image_m" src={el.productPictures[0].img} alt=""/>
+                          <img className="mainpage_item_image_secnt_m" src={el.productPictures[el.productPictures.length - 1].img} alt=""/>
+                        </div>
+                        }
+                         </>
+                          
+                      <Link className="mainpage_item_link_m" to={`/${el.slug}/${el._id}/p`} >
 
-                    {
-                      el.productPictures.length > 0 &&  <div >
-                      <img className="mainpage_item_image" src={el.productPictures[0].img} alt=""/>
+                        
+                        <div className="product_informat_m">
+                              <div className="product_nameeee_m">{el && el.name}</div>
+                              <div style={{marginTop:"7%",fontSize:"25px"}} className="product_quantity_m"> {el && el.price} <BiDollar/> </div>
+                              <div style={{marginTop:"7%",fontSize:"25px",color:"yellow"}} className="rading_store">
+                              {el &&  parseFloat(
+                                el.reviews.reduce((t, al) => {
+                                  return t + al.review;
+                                }, 0) / el.reviews.length
+                              ).toFixed(2)}<IoIosStar />
+                              </div>
+                        </div>
+                       
+                      
+                      </Link>
                     </div>
-                    }
-                    <div className="product_informat">
-                          <div className="product_nameeee">{el && el.name}</div>
-                          <div className="product_quantity"> quantity <FaArrowRight/> {el && el.quantity}</div>
-                    </div>
-                   
-                  
-                  </Link>
-                </div>
                   ))}
             </div>
           </div>
