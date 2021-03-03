@@ -160,7 +160,8 @@ const removeComent =(comentId)=>{
     
 }
 const likeComent =(comentId)=>{
-  const { productId } = props.match.params;
+  if(auth.authenticate){
+    const { productId } = props.match.params;
 
   const el={comentId,_id:productId}
   console.log(el)
@@ -172,6 +173,10 @@ const likeComent =(comentId)=>{
       };
       dispatch(getProductDetailById(payload));
     })
+  }else{
+    notify("please sign in")
+  }
+  
     
 }
   return (
