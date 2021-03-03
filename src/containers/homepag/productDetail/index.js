@@ -293,19 +293,22 @@ const likeComent =(comentId)=>{
               </p>
               <p className="flex_colum" style={{ display: "flex" }}>
                 <span
+                className="prod_describtion"
                   style={{
                     width: "100px",
-                    fontSize: "15px",
-                    color: "#878787",
+                    fontSize: "18px",
+                    color: "black",
                     fontWeight: "600",
                     marginRight: "20px",
                   }}
                 >
-                  Description
+                  Description:
                 </span>
                 <span
+                className="prod_descr"
                   style={{
                     fontSize: "20px",
+                    color:"black"
                   }}
                 >
                   {product.productDetails.description}

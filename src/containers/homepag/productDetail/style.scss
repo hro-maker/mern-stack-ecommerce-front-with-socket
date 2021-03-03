@@ -152,6 +152,19 @@
         color: blue;
     }
 }
+
+.prod_descr{
+    background-color:rgba($color: #fdf8f8, $alpha: 0.6);
+    color: black;
+    border-radius: 20px;
+}
+.prod_describtion{
+    color: black;
+
+}
+// .flex_colum{
+//     background-color: #fff;
+// }
 .likes_count{
     position: absolute;
     bottom: 14px;
