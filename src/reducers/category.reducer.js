@@ -3,6 +3,7 @@ import { categoryConstans } from "../actions/constans";
 const initialState = {
   categories: [],
   loading: false,
+  loadingg:false,
   error: null,
 };
 const buildNewCategories=(parentId,categories,category)=>{
@@ -44,10 +45,22 @@ const categoryReducer = (state = initialState, action) => {
  
        
     switch (action.type) {
-    case categoryConstans.GETT_ALL_CATEGORIES_SUCCES:
+      case categoryConstans.GETT_ALL_CATEGORIES_REQUEST:
+      return (state = {
+        ...state,
+        loadingg:true
+      });
+      case categoryConstans.GETT_ALL_CATEGORIES_SUCCES:
       return (state = {
         ...state,
         categories: action.payload.categories,
+        loadingg:false
+      });
+      
+    case categoryConstans.GETT_ALL_CATEGORIES_FAILURE:
+      return (state = {
+        ...state,
+        loadingg:false
       });
     case categoryConstans.ADD_NEW_CATEGORY_REQUEST:
       return (state = {

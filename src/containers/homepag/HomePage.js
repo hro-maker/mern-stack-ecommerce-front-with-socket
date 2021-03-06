@@ -10,6 +10,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Helmet } from 'react-helmet';
 import { BiDollar } from 'react-icons/bi';
 import { IoIosStar } from 'react-icons/io';
+import Loaderr from "../../components/Header/UI/loaderr";
 /**
  * @author
  * @function HomePage
@@ -21,6 +22,7 @@ const HomePage = (props) => {
   const [products, setproductes] = useState([]);
   const product = useSelector((state) => state.product);
   const productes = product.allproducts;
+  const category= useSelector(state => state.category)
 
   const randomprod = (productees) => {
     const prodArr = [];
@@ -35,21 +37,7 @@ const HomePage = (props) => {
     dispatch(getallproducts());
   }, []);
 
-  const forbackground =(img)=>{
-    return {
-        
-         backgroundImage: `url(${img})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        position: "absolute",
-        left: "10%",
-        bottom: "5px",
-       height: "100%",
-       zIndex: 1,
-      
-    };
-  }
+ 
   
   return (
     <div>

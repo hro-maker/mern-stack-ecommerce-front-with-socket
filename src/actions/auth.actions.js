@@ -8,6 +8,7 @@ export const login = (user) => {
       const res = await axioss.post("/signin", {
         ...user,
       });
+      console.log("resss",res)
       if (res.status === 200) {
         const { token, user } = res.data;
         localStorage.setItem("token", token);
@@ -19,17 +20,24 @@ export const login = (user) => {
             user,
           },
         });
-      } else {
-        if (res.status === 400) {
-          
+        return res;
+      }
+       if (res.status === 400) {
+          console.log("failure")
           dispatch({
             type: autConstants.LOGIN_FAILURE,
             payload: { error: res.data.error },
           });
+          return res;
         }
-      }
+      
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
+      dispatch({
+        type: autConstants.LOGIN_FAILURE,
+        payload: { error},
+      });
+      return error
     }
     
   };
@@ -47,10 +55,11 @@ export const isUserLoggedIn = () => {
         },
       });
     } else {
-      dispatch({
-        type: autConstants.LOGIN_FAILURE,
-        payload: { error: "Failed to login" },
-      });
+      console.log("error")
+      // dispatch({
+      //   type: autConstants.LOGIN_FAILURE,
+      //   payload: { error: "Failed to login" },
+      // });
     }
   };
 };

@@ -88,7 +88,7 @@ const Header = (props) => {
     // })
   };
 
-  const userLogin = () => {
+  const userLogin = async () => {
     if (signup) {
       userSignup();
     } else {
@@ -104,8 +104,8 @@ const Header = (props) => {
         notify("password minimal length is 6")
         return;
       }
-      dispatch(login({ email, password }))
-
+     await dispatch(login({ email, password }))
+     
     }
   };
 
@@ -115,6 +115,7 @@ const Header = (props) => {
 
   useEffect(() => {
     if (auth.authenticate) {
+      // notify("signin succes")
       setLoginModal(false);
     }
   }, [auth.authenticate]);
@@ -187,7 +188,7 @@ const Header = (props) => {
 useEffect(() => {
   if(auth.signup){
     notify('signup succes')
-    // dispatch({type:autConstants.SIGNUP_SETBOOLEAN})
+  
   }
 
 }, [auth.signup]);

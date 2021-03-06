@@ -13,6 +13,7 @@ import 'tippy.js/dist/tippy.css';
 import  Tippy  from '@tippyjs/react';
 
 import "./style.scss";
+import Loaderr from "../UI/loaderr";
 /**
  * @author
  * @function Menuheader
@@ -21,10 +22,17 @@ import "./style.scss";
 const Menuheader = (props) => {
   const category = useSelector((state) => state.category);
   const [fortool, setfortool] = useState(false);
+  const [load, setload] = useState(false);
   const [fortools, setfortools] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllCategory());
+    const f=async()=>{
+      setload(true)
+     await dispatch(getAllCategory()).then(()=>{
+       setload(false)
+     })
+    }
+    f()
   }, []);
  const [forcateg, setforcateg] = useState(true);
   const renderCategories = (categoryes) => {
@@ -52,6 +60,9 @@ const Menuheader = (props) => {
     }
     return categories;
   };
+  if(load){
+    return <Loaderr/>
+  }
   return (
     <div className="menuHeader">
       <ReactTooltip />

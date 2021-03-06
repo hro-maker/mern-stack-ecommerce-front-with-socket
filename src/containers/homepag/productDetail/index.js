@@ -24,6 +24,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import { MdClear } from "react-icons/md";
 import { FaHeart} from "react-icons/fa";
+import Loaderr from "../../../components/Header/UI/loaderr";
 
 /**
  * @author
@@ -38,6 +39,7 @@ const ProductDetailsPage = (props) => {
   const [slideIndex, setslideIndex] = useState(0);
   
   const [loading, setloading] = useState(false);
+  const [loadingcom, setloadingcom] = useState(false);
   useEffect(() => {
     setloading(true)
     const { productId } = props.match.params;
@@ -47,8 +49,10 @@ const ProductDetailsPage = (props) => {
         productId,
       },
     };
-    dispatch(getProductDetailById(payload));
-    setloading(false)
+    dispatch(getProductDetailById(payload)).then(()=>{
+      setloading(false)
+    })
+    
   }, []);
  
   if (Object.keys(product.productDetails).length === 0) {
@@ -138,16 +142,14 @@ let sum=0,rating=0
   rating= sum/product.productDetails.reviews.length
   
  const floorrading= parseFloat(rating).toFixed(2)
- if (loading) {
+ if (loading || loadingcom) {
   return (
-    <div className="loaderr">
-      Loaderrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-    </div>
+    <Loaderr/>
   );
 }
-const removeComent =(comentId)=>{
+const removeComent = (comentId)=>{
   const { productId } = props.match.params;
-  
+  setloadingcom(true)
   const el={comentId,_id:productId}
     dispatch(removecomentbyid(el)).then(()=>{
       const payload = {
@@ -156,11 +158,13 @@ const removeComent =(comentId)=>{
         },
       };
       dispatch(getProductDetailById(payload));
+      setloadingcom(false)
     })
-    
+   
 }
 const likeComent =(comentId)=>{
   if(auth.authenticate){
+    setloadingcom(true)
     const { productId } = props.match.params;
 
   const el={comentId,_id:productId}
@@ -172,6 +176,7 @@ const likeComent =(comentId)=>{
         },
       };
       dispatch(getProductDetailById(payload));
+      setloadingcom(false)
     })
   }else{
     notify("please sign in")
@@ -179,6 +184,7 @@ const likeComent =(comentId)=>{
   
     
 }
+
   return (
     <Layout>
       <ToastContainer />
