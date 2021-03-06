@@ -21,12 +21,11 @@ const Layout = (props) => {
    }
  
 }, [auth.error]);
- if(auth.authenticating || auth.loading ){
+ if(auth.authenticating || auth.loading || auth.load){
    return <Loaderr/>
  }
 
   return(
-    
    <>
    <Header/>
    <ToastContainer/>

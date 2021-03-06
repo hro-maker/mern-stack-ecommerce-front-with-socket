@@ -45,7 +45,7 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const burger=["meniu__icon"];
   const burgerr=["meniu__icon activeee"];
-  
+ 
   const cart = useSelector((state) => state.cart);
   const notify = (el) => toast.info(`${el}`);
   const userSignup = () => {

@@ -14,6 +14,7 @@ const initialState = {
   message: "",
   users: [],
   signup: null,
+  load:false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -65,12 +66,14 @@ const authReducer = (state = initialState, action) => {
     case autConstants.SIGNUP_REQUEST:
       return (state = {
         ...state,
+        load:true
       });
     case autConstants.SIGNUP_SUCCESS:
       return (state = {
         ...state,
         signup: true,
         message: "signup success",
+        load:false
       });
     case autConstants.SIGNUP_SETBOOLEAN:
       return (state = {
@@ -83,6 +86,7 @@ const authReducer = (state = initialState, action) => {
         error: action.payload.error,
         signup: false,
         message: "signup falure",
+        load:false
       });
 
     default:
