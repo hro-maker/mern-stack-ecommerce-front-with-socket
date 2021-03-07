@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect } from "react";
+import React, {useEffect } from "react";
 import Layout from "../../../components/Header/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetailById,
   addcoment as _addcoment,
-  adreting,
-  removecomentbyid,
-  likeComment
+  adreting
 } from "./../../../actions/product.action";
 import { IoIosArrowForward, IoIosStar, IoMdCart } from "react-icons/io";
 import { BiDollar } from "react-icons/bi";
@@ -16,15 +14,13 @@ import { addToCart } from "./../../../actions/cart.action";
 import { useState } from "react";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import panda from "./p.jpg";
 import ReactStars from "react-rating-stars-component";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
-import { MdClear } from "react-icons/md";
-import { FaHeart} from "react-icons/fa";
 import Loaderr from "../../../components/Header/UI/loaderr";
+import ComentsPagination from "../../../components/pagination";
 
 /**
  * @author
@@ -39,7 +35,7 @@ const ProductDetailsPage = (props) => {
   const [slideIndex, setslideIndex] = useState(0);
   
   const [loading, setloading] = useState(false);
-  const [loadingcom, setloadingcom] = useState(false);
+
   useEffect(() => {
     setloading(true)
     const { productId } = props.match.params;
@@ -90,22 +86,7 @@ const ProductDetailsPage = (props) => {
     });
     setcoment("");
   };
-  const yearformatDate = (date) => {
-    if (date) {
-      const d = new Date(date);
-      return `${d.getFullYear()}y - ${d.getMonth() + 1}m - ${d.getDate()}d`;
-    }
-    return "";
-  };
-  const formatDate = (date) => {
-    if (date) {
-      const d = new Date(date);
-      return `${d.getHours() < 10 ? `0${d.getHours()}` : d.getHours()} : ${
-        d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes()
-      } :${d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds()}s`;
-    }
-    return "";
-  };
+
  
   const ratingChanged = (newRating) => {
     if (!auth.authenticate) {
@@ -142,47 +123,21 @@ let sum=0,rating=0
   rating= sum/product.productDetails.reviews.length
   
  const floorrading= parseFloat(rating).toFixed(2)
- if (loading || loadingcom) {
+ if (loading ) {
   return (
     <Loaderr/>
   );
 }
-const removeComent = (comentId)=>{
-  const { productId } = props.match.params;
-  setloadingcom(true)
-  const el={comentId,_id:productId}
-    dispatch(removecomentbyid(el)).then(()=>{
-      const payload = {
-        params: {
-          productId,
-        },
-      };
-      dispatch(getProductDetailById(payload));
-      setloadingcom(false)
-    })
-   
-}
-const likeComent =(comentId)=>{
-  if(auth.authenticate){
-    setloadingcom(true)
-    const { productId } = props.match.params;
 
-  const el={comentId,_id:productId}
-  console.log(el)
-    dispatch(likeComment (el)).then(()=>{
+const getproduct=()=>{
+  const { productId } = props.match.params;
+      
       const payload = {
         params: {
           productId,
         },
       };
       dispatch(getProductDetailById(payload));
-      setloadingcom(false)
-    })
-  }else{
-    notify("please sign in")
-  }
-  
-    
 }
 
   return (
@@ -340,73 +295,9 @@ const likeComent =(comentId)=>{
                   marginTop: "15px",
                 }}
               >
-                {product.productDetails.coments && product.productDetails.coments.length > 0?
-                  
-                  product.productDetails.coments.map((element) => (
-                    <div
-                      className="coment_wraper"
-                      style={{
-                        fontSize: "12px",
-                        marginTop: "15px",
-                        marginLeft:"50px"
-                      }}
-                    >
-                      {element.userPicture ? (
-                        <div>
-                          <img
-                            className="comentpicter_wraper"
-                            src={element.userPicture}
-                            alt=""
-                          />
-                        </div>
-                      ) : (
-                        <div>
-                          <img
-                            className="comentpicter_wraper"
-                            src={panda}
-                            alt=""
-                          />
-                        </div>
-                      )}
-                      <div >
-                        {element.userName && (
-                          <div className="coment_descr">
-                            <Link className="menuheater_linkkk"
-                                  to={`/profiles/user/${element.userId}/u`}
-                                >
-                                   {element.userName}
-                                </Link>
-                           
-                            <span>
-                              date  {yearformatDate(element.date)}
-                            </span>
-                          </div>
-                        )}
-                        {
-                          <div className="coment_descr">
-                            {element.coment}{" "}
-                            <span>time {formatDate(element.date)}</span>
-                            {auth.authenticate && auth.user._id === element.userId && 
-                              <div onClick={()=>removeComent(element._id)}>
-                              <MdClear className="delete_coment" />
-                              </div>
-                            
-                            }
-                            <div onClick={()=>likeComent(element._id)}>
-                                  <FaHeart className="like_coment"/>
-                                  <div className="likes_count">
-                                  {element.likes.length} 
-                                  </div>
-                            </div>
-                            
-                            
-                            
-                          </div>
-                          // BsFillTrash2Fill
-                        }
-                      </div>
-                    </div>
-                  )) : (<div className="errorrrrr" style={{color:"white"}}>for this product dont found coments</div>) }
+                {product.productDetails.coments && <ComentsPagination getproduct={getproduct} productId={props.match.params.productId} coments={product.productDetails.coments}/>}
+
+
               </div>
             </div>
           </div>

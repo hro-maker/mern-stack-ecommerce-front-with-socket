@@ -14,6 +14,29 @@ export const getproductsbyslug =(slug)=>{
         }
     }
 }
+const getProductDetailById =(payload) =>{
+    return async dispatch =>{
+        dispatch({type:productConstans.GETT_PRODUCT_DETAILS_BY_ID_REQUEST})
+        let res;
+        try {
+            const {productId} = payload.params;
+            res= await axioss.get(`/product/${productId}`)
+            
+            dispatch({
+                type:productConstans.GETT_PRODUCT_DETAILS_BY_ID_SUCCES,
+                payload:{productDetails: res.data.product}
+            })
+        } catch (error) {
+            console.log('product id error',error)
+           dispatch({
+            type:productConstans.GETT_PRODUCT_DETAILS_BY_ID_FAILURE,
+            payload:{error: res.data.error}
+           })
+        }
+    }
+}
+
+
 export const getallproducts =()=>{
     return async dispatch =>{
         const res= await axioss.get("/product/getall")
@@ -26,6 +49,7 @@ export const getallproducts =()=>{
     
 }
 export const removecomentbyid = (payload) =>{
+   
     return async dispatch =>{
           await axioss.post("/product/removecoment",{
                     ...payload
@@ -67,27 +91,7 @@ export const getproductPage =(payload)=>{
         }
     }
 }
- const getProductDetailById =(payload) =>{
-    return async dispatch =>{
-        dispatch({type:productConstans.GETT_PRODUCT_DETAILS_BY_ID_REQUEST})
-        let res;
-        try {
-            const {productId} = payload.params;
-            res= await axioss.get(`/product/${productId}`)
-            
-            dispatch({
-                type:productConstans.GETT_PRODUCT_DETAILS_BY_ID_SUCCES,
-                payload:{productDetails: res.data.product}
-            })
-        } catch (error) {
-            console.log('product id error',error)
-           dispatch({
-            type:productConstans.GETT_PRODUCT_DETAILS_BY_ID_FAILURE,
-            payload:{error: res.data.error}
-           })
-        }
-    }
-}
+
 export const addcoment =(payload)=>{
     return async dispatch =>{
        
