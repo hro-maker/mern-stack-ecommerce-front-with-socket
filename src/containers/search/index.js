@@ -55,7 +55,7 @@ const Search = (props) => {
                                         <div className="product_img_cont">
                                           <img className="product_img" src={el.productPictures[0].img} alt=""/>
                                         </div>
-                                        <div className="prod_descr">
+                                        <div className="prod_descrre">
                                         <div className="product_rating">
                                         {parseFloat(
                                           el.reviews.reduce((t, el) => {
@@ -67,7 +67,7 @@ const Search = (props) => {
                                             <div className="namee">Product name</div>
                                         <div className="product_name">{el.name}</div>
                                           <div className="namee">Product Description</div>
-                                        <div className="prod_descr"><span className="prod_descr_span">{el.description}</span></div>
+                                        <div className="prod_descrre"><span className="prod_descr_spann">{el.description}</span></div>
                                         </div>
                                         </Link>
                                       </div>
