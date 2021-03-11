@@ -82,7 +82,7 @@ const AllChatrooms = (props) => {
                       <div className="title">  All Chats</div>
               <div className="chatroom_subcontainer">
               {
-                 use.map((el,index )=>
+                 use.reverse().map((el,index )=>
                  <Link 
                  key={index}
                  to={`/user/chatroom/${el && el._id}${auth.user._id && auth.user._id}/${el && el.firstName}/m`}
