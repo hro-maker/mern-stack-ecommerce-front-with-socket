@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import Loaderr from "../../../components/Header/UI/loaderr";
 import ComentsPagination from "../../../components/pagination";
+import PaginateComentt from './../../../components/paginateComent/index';
 
 /**
  * @author
@@ -295,7 +296,7 @@ const getproduct=()=>{
                   marginTop: "15px",
                 }}
               >
-                {product.productDetails.coments && <ComentsPagination getproduct={getproduct} productId={props.match.params.productId} coments={product.productDetails.coments}/>}
+                {product.productDetails.coments && <PaginateComentt getproduct={getproduct} productId={props.match.params.productId} coments={product.productDetails.coments}/>}
 
 
               </div>
