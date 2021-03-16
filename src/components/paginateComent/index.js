@@ -152,6 +152,23 @@ const displaydata=_.chunk(coments, 5)[currentPage]
   return (
     <>
       <ToastContainer />
+           
+      <ReactPaginate
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={Math.ceil(coments.length/5)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"activeclasss"}
+          pageClassName='item_pa'
+          previousClassName='item_pa'
+          nextClassName='item_pa'
+        />
       {displaydata && displaydata.length > 0 &&
         displaydata.map((element) => (
           <div
@@ -205,23 +222,7 @@ const displaydata=_.chunk(coments, 5)[currentPage]
             </div>
           </div>
         ))}
-     
-        <ReactPaginate
-          previousLabel={"<"}
-          nextLabel={">"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
-          pageCount={Math.ceil(coments.length/5)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={handlePageClick}
-          containerClassName={"pagination"}
-          subContainerClassName={"pages pagination"}
-          activeClassName={"activeclasss"}
-          pageClassName='item_pa'
-          previousClassName='item_pa'
-          nextClassName='item_pa'
-        />
+
       
     </>
   );

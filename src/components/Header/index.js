@@ -25,6 +25,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { RiMessengerFill } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
 import { BiDollar } from 'react-icons/bi';
+import { getallchatrooms } from "../../actions/chatroom.action";
 
 /**
  * @author
@@ -104,7 +105,9 @@ const Header = (props) => {
         notify("password minimal length is 6")
         return;
       }
-     await dispatch(login({ email, password }))
+     await dispatch(login({ email, password })).then(()=>{
+       dispatch(getallchatrooms())
+     })
      
     }
   };

@@ -19,12 +19,14 @@ const AllChatrooms = (props) => {
     const [usersearch, setusersearch] = useState("");
     const chat = useSelector(state => state.chat)
     const auth = useSelector(state => state.auth)
-    const [chatroomsi, setchatrooms] = useState({});
+    // const [use, setUse] = useState([]);
     const chatrooms=chat.chatrooms.filter(el => el.name.includes(auth.user._id))
+    console.log("chatroom",chatrooms)
   
-    // useEffect(() => {
-      
-    // }, []);
+    const tokennnn= localStorage.getItem('token')
+        if(!tokennnn || tokennnn.length === 0){
+          return  (<Redirect to="/"/>)
+        }
         if(chatrooms.length===0){
             return (
                 <Layout>
@@ -43,17 +45,16 @@ const AllChatrooms = (props) => {
         const difchatrom = chatrooms.map(element => {
             return element.name.replace(auth.user._id,"")
         })
-      const use=  difchatrom.map(ai => {
+     
+      const use= difchatrom.map(ai => {
             return ai= auth.users.find(u => u._id == ai)
         })
        
         setTimeout(() => {
             console.log("h")
         }, 1);
-        if(!auth.authenticate){
-            return  (<Redirect to="/"/>)
-        }
-        if(!use.length){
+        
+        if(!use.length || use[0]===undefined){
             return (
                 <Layout>
                     <div style={{color:"white",textAlign:"center"}} className="errorrr">
@@ -64,8 +65,8 @@ const AllChatrooms = (props) => {
                 </Layout>
             )
         }
-        
-         
+    
+         console.log(use,"useeeeee")
   return(
       <Layout>
             <Helmet>
@@ -79,14 +80,16 @@ const AllChatrooms = (props) => {
                     
                     </div>
 
-                      <div className="title">  All Chats</div>
+                      <div style={{color:"#ffffff"}} className="title">  All Chats</div>
               <div className="chatroom_subcontainer">
               {
                  use.reverse().map((el,index )=>
+                 
                  <Link 
                  key={index}
                  to={`/user/chatroom/${el && el._id}${auth.user._id && auth.user._id}/${el && el.firstName}/m`}
                  style={{textDecoration:"none"}}>
+                     {/* {!el && <Redirect to="/"/>} */}
                     <div key={index} className="single_room_cont"> 
                         
                         {el &&  <div className="user_img">

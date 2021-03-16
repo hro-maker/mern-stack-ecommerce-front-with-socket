@@ -3,7 +3,8 @@
     text-align: center;
     width: 100%;
     min-height: 100vh;
-    background: url(../../images/pexels-photo-443446.jpeg)10px top/cover no-repeat;
+    // background: url(../../images/pexels-photo-443446.jpeg)10px top/cover no-repeat;
+    background: url(./pexels-photo-2158808.jpeg)10px top/cover no-repeat;
     z-index: 0;
 }
 .home_subwraper{
@@ -17,7 +18,7 @@
 }
 .main_page_item{
     position: relative;
-    width: 28%;
+    width: 20%;
     background-color:rgba($color: #0f0202, $alpha: 0.8);
     height: 30vh;
     margin: 10px;
@@ -61,7 +62,7 @@
 }
 .main_page_item_m{
     position: relative;
-    width: 28%;
+    width: 24%;
     min-width: 150px;
     height: 30vh;
     animation: mainitem 5s infinite;
@@ -136,7 +137,6 @@
 //     width: 100%;
 //     height: 100%;
 // }
-
 @keyframes mainitem {
     0% {
         background: rgb(235,235,234);
