@@ -1,0 +1,63 @@
+.forget_passwordpage{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(112, 89, 89);
+    color: black;
+}
+.forget_input{
+    background-color: black;
+    color: white;
+    width: 30%;
+    height: 30px;
+    padding: 2px;
+    font-size: 15px;
+}
+.forg_wraper_inp{
+
+   padding: 10%;
+}
+.forgot_pass_btn{
+    width: 10%;
+    height: 30px;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    font-size: 20px;
+}
+.reset_password_wraper{
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(235,235,234);
+background: linear-gradient(90deg, rgba(235,235,234,1) 0%, rgba(23,54,124,1) 0%, rgba(48,47,37,0.8631827731092436) 100%, rgba(47,165,247,0.9668242296918768) 100%, rgba(200,219,232,0.9069248338870431) 100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reset_input{
+    display: block;
+    height: 40px;
+    width: 300px;
+    font-size: 20px;
+    background-color: #000;
+    color: white;
+    padding: 3px 7px;
+
+    border-radius: 15px;
+}
+.reset_btn{
+    display: block;
+    height: 40px;
+    width: 300px;
+    cursor: pointer;
+    background-color: rgb(59, 28, 28);
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    &:hover{
+        background: rgb(235,235,234);
+        background: linear-gradient(90deg, rgba(235,235,234,1) 0%, rgba(23,54,124,1) 0%, rgba(48,47,37,0.8631827731092436) 100%, rgba(47,165,247,0.9668242296918768) 100%, rgba(200,219,232,0.9069248338870431) 100%);
+        color: black;
+    }
+}

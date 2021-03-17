@@ -80,7 +80,7 @@
     z-index: 200000;
 }
 .logoo,.logood{
-    width: 30%;
+    width: 15%;
 }
 .logood{
     display: none;
@@ -262,6 +262,9 @@
 @media (max-width: 500px) {
         .row{
             min-width: 250px;
+        }
+        .logoo{
+            width: 70%;
         }
         
 }

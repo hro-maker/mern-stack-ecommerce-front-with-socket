@@ -142,6 +142,8 @@ const Header = (props) => {
   const renderNonLoggedInMenu = () => {
     return (
       <div className="for_css">
+
+        <Link style={{color:"white",textDecoration:'none',marginRight:"10px"}} to='/forgot'>forgot password ?</Link>
       <DropdownMenu
         menu={
           <a

@@ -37,6 +37,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         token: action.payload.token,
+        error: null,
         authenticate: true,
         authenticating: false,
         message: "login succes",
@@ -73,6 +74,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         signup: true,
         message: "signup success",
+        error: null,
         load:false
       });
     case autConstants.SIGNUP_SETBOOLEAN:

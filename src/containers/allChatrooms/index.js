@@ -89,7 +89,6 @@ const AllChatrooms = (props) => {
                  key={index}
                  to={`/user/chatroom/${el && el._id}${auth.user._id && auth.user._id}/${el && el.firstName}/m`}
                  style={{textDecoration:"none"}}>
-                     {/* {!el && <Redirect to="/"/>} */}
                     <div key={index} className="single_room_cont"> 
                         
                         {el &&  <div className="user_img">

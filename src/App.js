@@ -21,7 +21,8 @@ import { chatapi } from './urlConfig';
 import { getallchatrooms } from './actions/chatroom.action';
 import AllChatrooms from './containers/allChatrooms/index';
 import SearchUsers from './containers/searchusers/index';
-import Loader from './components/loader/index';
+import ForgetPassword from './containers/forgetpassword';
+import ResetPAssword from './containers/resetpass/index';
 
 
 
@@ -82,6 +83,8 @@ function App() {
       <Switch>
       <Route path='/' exact component={HomePage} />
       <Route path='/cart'  component={CardPage} />
+      <Route path='/forgot'  component={ForgetPassword} />
+      <Route path='/resetPaassword/:tokenn'  component={ResetPAssword} />
       <Route path='/profile'  component={Profile} />
       <Route path='/allchatrooms'  component={AllChatrooms} />
       <Route path='/checkout'  component={CheckoutPage} />

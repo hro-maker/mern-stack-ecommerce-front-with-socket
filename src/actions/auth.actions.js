@@ -130,3 +130,15 @@ export const getallusers=()=>{
         })
       }
 }
+export const forgotPassword=(data)=>{
+  return async dispatch=> {
+   const res= axioss.post('/forget',{...data})
+   return res
+  }
+}
+export const ResetPassword=(data)=>{
+  return async dispatch=> {
+   const res=await axioss.post('/reset',{...data})
+   return res
+  }
+}
