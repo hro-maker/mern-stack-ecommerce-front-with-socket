@@ -30,6 +30,7 @@ const Chatroom = (props) => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const messageref = React.useRef();
   const messagelistref = React.useRef();
+  const [adminmessages,setAdminMessages]=useState({user:null,message:''})
   const chatroomname = `${auth.user.firstName} ${props.match.params.username}`;
   const [messages, setmessages] = useState([]);
   const dispatch = useDispatch();
@@ -142,7 +143,6 @@ const Chatroom = (props) => {
         }
      
     };
-    // eslint-disable-next-line
   }, [socket]);
  
   useEffect(() => {
@@ -195,7 +195,11 @@ const Chatroom = (props) => {
       
   },[messages,socket])
   useEffect(() => {
-    console.log("messages socket 1",socket)
+    if(socket){
+      socket.on("adminMessaage",({user,message})=>{
+                setAdminMessages({user,message})
+      })
+    }
     
   }, [socket]);
  const token= localStorage.getItem('token')
@@ -228,6 +232,39 @@ const onEmojiClick = (event, emojiObject) => {
           }
         }
  }
+ const typing=()=>{
+  if (socket) {
+    const myId=JSON.parse(localStorage.getItem('user'))._id
+      const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
+  const userId = props.match.params.chatroom.replace(myId, "");
+  const chatroomms = chatromiiii ?  chatromiiii.filter(
+    (el) => el.name.includes(myId) && el.name.includes(userId)
+  ) : []
+    if (chatroomms[0] && chatroomms[0]._id) {
+
+      socket.emit("typing", {
+        chatroomId: chatroomms[0]._id,
+        user:auth.user._id        
+      });
+    }
+  }
+ }
+ const nontyping=()=>{
+  if (socket) {
+    const myId=JSON.parse(localStorage.getItem('user'))._id
+      const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
+  const userId = props.match.params.chatroom.replace(myId, "");
+  const chatroomms = chatromiiii ?  chatromiiii.filter(
+    (el) => el.name.includes(myId) && el.name.includes(userId)
+  ) : []
+    if (chatroomms[0] && chatroomms[0]._id) {
+
+      socket.emit("untyping", {
+        chatroomId: chatroomms[0]._id
+      });
+    }
+  }
+}
   return (
     <Layout>
      
@@ -267,15 +304,15 @@ const onEmojiClick = (event, emojiObject) => {
                 ) : (
                   
                     <div className="yourmesage">
-                          <Helmet>
+                          {/* <Helmet>
                       <title> chat with {
-                        auth.users.find((al) => al._id == el.userId) &&
+                       auth && auth.users.find((al) => al._id == el.userId) &&
                          
                         auth.users.find((al) => al._id == el.userId)
                           .firstName
                         
                         }</title>
-                          </Helmet> 
+                          </Helmet>  */}
                       <div className="df dffff">
                     <div className="he">
                       <div>
@@ -323,7 +360,13 @@ const onEmojiClick = (event, emojiObject) => {
                 )}
                
               </div>
-            )) : <div className="empty_chat" >chat is empty</div> }                
+            )) : <div className="empty_chat" >chat is empty</div> }     
+           
+             <div  className="adminMessage">
+             {
+              adminmessages.user !== null && adminmessages.user !== auth.user._id && adminmessages.message !== undefined && adminmessages.message.length !== 0  && adminmessages.message
+              }
+                </div>           
         </div>
         
         <div className="formchka">
@@ -335,10 +378,12 @@ const onEmojiClick = (event, emojiObject) => {
           
           
             <input
+              onFocus={typing}
+              onBlur={nontyping}
               placeholder="write message"
               ref={messageref}
               type="text"
-              className="inputt"
+              className="inputt inpu_message_rel"
             />
             <button className="chat_btn" type="submit">
               sent
