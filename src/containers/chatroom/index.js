@@ -7,13 +7,13 @@ import { useEffect } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import { useState } from "react";
 import "./style.scss";
-import plac from './plac.png'
+import plac from "./plac.png";
 import { getmessageBychatroomId } from "./../../actions/message";
-import Picker from 'emoji-picker-react';
+import Picker from "emoji-picker-react";
 import { GrEmoji } from "react-icons/gr";
-import io from 'socket.io-client'
-import { chatapi } from './../../urlConfig';
-import { Helmet } from 'react-helmet';
+import io from "socket.io-client";
+import { chatapi } from "./../../urlConfig";
+import { Helmet } from "react-helmet";
 
 /**
  * @author
@@ -30,7 +30,7 @@ const Chatroom = (props) => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const messageref = React.useRef();
   const messagelistref = React.useRef();
-  const [adminmessages,setAdminMessages]=useState({user:null,message:''})
+  const [adminmessages, setAdminMessages] = useState([]);
   const chatroomname = `${auth.user.firstName} ${props.match.params.username}`;
   const [messages, setmessages] = useState([]);
   const dispatch = useDispatch();
@@ -38,14 +38,15 @@ const Chatroom = (props) => {
     e.preventDefault();
 
     if (socket) {
-      const myId=JSON.parse(localStorage.getItem('user'))._id
-        const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
-    const userId = props.match.params.chatroom.replace(myId, "");
-    const chatroomms = chatromiiii ?  chatromiiii.filter(
-      (el) => el.name.includes(myId) && el.name.includes(userId)
-    ) : []
+      const myId = JSON.parse(localStorage.getItem("user"))._id;
+      const chatromiiii = JSON.parse(localStorage.getItem("chatrooms"));
+      const userId = props.match.params.chatroom.replace(myId, "");
+      const chatroomms = chatromiiii
+        ? chatromiiii.filter(
+            (el) => el.name.includes(myId) && el.name.includes(userId)
+          )
+        : [];
       if (chatroomms[0] && chatroomms[0]._id) {
-
         socket.emit("chatroomMessage", {
           chatroomId: chatroomms[0]._id,
           message: messageref.current.value,
@@ -65,318 +66,326 @@ const Chatroom = (props) => {
       newSocket.on("disconnect", () => {
         setSocket(null);
         setTimeout(setupSocket, 3000);
-        console.log("disconect")
+        console.log("disconect");
       });
 
       newSocket.on("connect", () => {
-        console.log("conected")
+        console.log("conected");
       });
 
       setSocket(newSocket);
-      
     }
   };
   useEffect(() => {
-    setupSocket()
+    setupSocket();
   }, []);
-  useEffect(() => { 
+  useEffect(() => {
     setloading(true);
-    
-    const myId=JSON.parse(localStorage.getItem('user'))._id
 
-    
-    const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
+    const myId = JSON.parse(localStorage.getItem("user"))._id;
+
+    const chatromiiii = JSON.parse(localStorage.getItem("chatrooms"));
     const userId = props.match.params.chatroom.replace(myId, "");
-    const chatroomms = chatromiiii ?  chatromiiii.filter(
-      (el) => el.name.includes(myId) && el.name.includes(userId)
-    ) : []
-    console.log()
+    const chatroomms = chatromiiii
+      ? chatromiiii.filter(
+          (el) => el.name.includes(myId) && el.name.includes(userId)
+        )
+      : [];
+    console.log();
     if (socket) {
       if (chatroomms.length > 0) {
-        
         setchatrooooom(chatroomms[0]);
-          dispatch(
-            getmessageBychatroomId({ chatroomId: chatroomms[0]._id })
-          ).then((res) => {
-            if (res.data.messages) {
-              if (res.data.messages.length > 0) {
-                const newMessages = [...messages, ...res.data.messages];
-                setmessages(newMessages);
-              }
+        dispatch(
+          getmessageBychatroomId({ chatroomId: chatroomms[0]._id })
+        ).then((res) => {
+          if (res.data.messages) {
+            if (res.data.messages.length > 0) {
+              const newMessages = [...messages, ...res.data.messages];
+              setmessages(newMessages);
             }
-          });
-          socket.emit("joinRoom", {
-            chatroomId: chatroomms[0]._id,
-          });
-          
-        
+          }
+        });
+        socket.emit("joinRoom", {
+          chatroomId: chatroomms[0]._id,
+        });
       } else {
         setTimeout(() => {
           dispatch(
             addChatroom({ name: props.match.params.chatroom, chatroomname })
           ).then((res) => {
             setchatrooooom(res.data.chatrom);
-            if(res.data.chatrom){
-              if(socket){
+            if (res.data.chatrom) {
+              if (socket) {
                 socket.emit("joinRoom", {
                   chatroomId: res.data.chatrom._id,
                 });
               }
-              
             }
-           
           });
         }, 100);
       }
     }
-     
-    setloading(false);
-    props.setupSocket()
-    return () => {
 
-        if (socket) {
-         if(chatroomms[0]){
+    setloading(false);
+    props.setupSocket();
+    return () => {
+      if (socket) {
+        if (chatroomms[0]) {
           socket.emit("leaveRoom", {
             chatroomId: chatroomms[0]._id,
           });
-         } 
         }
-     
+      }
     };
   }, [socket]);
- 
+
   useEffect(() => {
     if (messagelistref.current) {
-      messagelistref.current.scrollIntoView(
-        {
-          behavior: 'smooth',
-          block: 'end',
-          inline: 'nearest'
-        })
+      messagelistref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
     }
-  },
-  [messages])
+  }, [messages]);
   useEffect(() => {
-         const myId=JSON.parse(localStorage.getItem('user'))._id
-        const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
-      const userId = props.match.params.chatroom.replace(myId, "");
-      const chatroomms = chatromiiii ? chatromiiii.filter(
-        (el) => el.name.includes(myId) && el.name.includes(userId)
-      ) : []
-      if (socket) {
-        socket.on("newMessage", (message) => {
-            console.log(message)
-          const newMessages = [...messages, message];
-          setmessages(newMessages);
-        });
-        messageref.current.value = "";
-      }
-      if(messages.length === 0 ){
-        if(chatroomms[0] && chatroomms[0]._id){
-          if(socket){
-            socket.emit("joinRoom", {
-              chatroomId: chatroomms[0]._id,
-            });
-          }
-          dispatch(
-            getmessageBychatroomId({ chatroomId: chatroomms[0]._id })
-          ).then((res) => {
-            if (res.data.messages) {
-              if (res.data.messages.length > 0) {
-                const newMessages = [...messages, ...res.data.messages];
-                setmessages(newMessages);
-              }
-            }
+    const myId = JSON.parse(localStorage.getItem("user"))._id;
+    const chatromiiii = JSON.parse(localStorage.getItem("chatrooms"));
+    const userId = props.match.params.chatroom.replace(myId, "");
+    const chatroomms = chatromiiii
+      ? chatromiiii.filter(
+          (el) => el.name.includes(myId) && el.name.includes(userId)
+        )
+      : [];
+    if (socket) {
+      socket.on("newMessage", (message) => {
+        console.log(message);
+        const newMessages = [...messages, message];
+        setmessages(newMessages);
+      });
+      messageref.current.value = "";
+    }
+    if (messages.length === 0) {
+      if (chatroomms[0] && chatroomms[0]._id) {
+        if (socket) {
+          socket.emit("joinRoom", {
+            chatroomId: chatroomms[0]._id,
           });
         }
-       
-
-      }
-      
-  },[messages,socket])
-  useEffect(() => {
-    if(socket){
-      socket.on("adminMessaage",({user,message})=>{
-                setAdminMessages({user,message})
-      })
-    }
-    
-  }, [socket]);
- const token= localStorage.getItem('token')
-if(!token || token.length === 0){
-  return  (<Redirect to="/"/>)
-}
-if (loading) {
-  return (
-  <div>loadinggggggggg</div>
-    )
-}
-const formatDate = (date) => {
-  if (date) {
-    const d = new Date(date);
-    return `${d.getHours() < 10 ? `0${d.getHours()}` : d.getHours()} : ${
-      d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes()
-    } `;
-  }
-  return "";
-};
-const onEmojiClick = (event, emojiObject) => {
-  setChosenEmoji(emojiObject);
-  console.log("sdaasd",emojiObject)
-  messageref.current.value=messageref.current.value + emojiObject.emoji
-};             
- const closeemojipicker=(e)=>{
-        if(emojipickershow){
-          if(e.target.className ==="chatcontainer_top" || e.target.className ==="chat_wraper" ){
-            setemojipickershow(false)
+        dispatch(
+          getmessageBychatroomId({ chatroomId: chatroomms[0]._id })
+        ).then((res) => {
+          if (res.data.messages) {
+            if (res.data.messages.length > 0) {
+              const newMessages = [...messages, ...res.data.messages];
+              setmessages(newMessages);
+            }
           }
+        });
+      }
+    }
+  }, [messages, socket]);
+  useEffect(() => {
+    if (socket) {
+      socket.on("adminMessaage", ({ user, message }) => {
+        const ar = adminmessages.filter((el) => el.user == user);
+        if (ar.length === 0) {
+          setAdminMessages([...adminmessages, { user, message }]);
+        } else {
+          const ai = adminmessages.map((oi) => {
+            if (oi.user == user) {
+              oi = { user, message };
+            }
+            return oi;
+          });
+          setAdminMessages(ai)
         }
- }
- const typing=()=>{
-  if (socket) {
-    const myId=JSON.parse(localStorage.getItem('user'))._id
-      const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
-  const userId = props.match.params.chatroom.replace(myId, "");
-  const chatroomms = chatromiiii ?  chatromiiii.filter(
-    (el) => el.name.includes(myId) && el.name.includes(userId)
-  ) : []
-    if (chatroomms[0] && chatroomms[0]._id) {
-
-      socket.emit("typing", {
-        chatroomId: chatroomms[0]._id,
-        user:auth.user._id        
       });
     }
+  }, [socket]);
+  const token = localStorage.getItem("token");
+  if (!token || token.length === 0) {
+    return <Redirect to="/" />;
   }
- }
- const nontyping=()=>{
-  if (socket) {
-    const myId=JSON.parse(localStorage.getItem('user'))._id
-      const chatromiiii=JSON.parse(localStorage.getItem('chatrooms'));
-  const userId = props.match.params.chatroom.replace(myId, "");
-  const chatroomms = chatromiiii ?  chatromiiii.filter(
-    (el) => el.name.includes(myId) && el.name.includes(userId)
-  ) : []
-    if (chatroomms[0] && chatroomms[0]._id) {
-
-      socket.emit("untyping", {
-        chatroomId: chatroomms[0]._id
-      });
+  if (loading) {
+    return <div>loadinggggggggg</div>;
+  }
+  const formatDate = (date) => {
+    if (date) {
+      const d = new Date(date);
+      return `${d.getHours() < 10 ? `0${d.getHours()}` : d.getHours()} : ${
+        d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes()
+      } `;
     }
-  }
-}
+    return "";
+  };
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+    console.log("sdaasd", emojiObject);
+    messageref.current.value = messageref.current.value + emojiObject.emoji;
+  };
+  const closeemojipicker = (e) => {
+    if (emojipickershow) {
+      if (
+        e.target.className === "chatcontainer_top" ||
+        e.target.className === "chat_wraper"
+      ) {
+        setemojipickershow(false);
+      }
+    }
+  };
+  const typing = () => {
+    if (socket) {
+      const myId = JSON.parse(localStorage.getItem("user"))._id;
+      const chatromiiii = JSON.parse(localStorage.getItem("chatrooms"));
+      const userId = props.match.params.chatroom.replace(myId, "");
+      const chatroomms = chatromiiii
+        ? chatromiiii.filter(
+            (el) => el.name.includes(myId) && el.name.includes(userId)
+          )
+        : [];
+      if (chatroomms[0] && chatroomms[0]._id) {
+        socket.emit("typing", {
+          chatroomId: chatroomms[0]._id,
+          user: auth.user._id,
+        });
+      }
+    }
+  };
+  const nontyping = () => {
+    if (socket) {
+      const myId = JSON.parse(localStorage.getItem("user"))._id;
+      const chatromiiii = JSON.parse(localStorage.getItem("chatrooms"));
+      const userId = props.match.params.chatroom.replace(myId, "");
+      const chatroomms = chatromiiii
+        ? chatromiiii.filter(
+            (el) => el.name.includes(myId) && el.name.includes(userId)
+          )
+        : [];
+      if (chatroomms[0] && chatroomms[0]._id) {
+        socket.emit("untyping", {
+          chatroomId: chatroomms[0]._id,
+          user: auth.user._id,
+        });
+      }
+    }
+  };
   return (
     <Layout>
-     
-      <div className="chatcontainer_top" onClick={(e)=> closeemojipicker(e)} >
-        
-        <div  className="chat_wraper">
-       
-          {messages && messages.length>0 ?
-              
+      <div className="chatcontainer_top" onClick={(e) => closeemojipicker(e)}>
+        <div className="chat_wraper">
+          {messages && messages.length > 0 ? (
             messages.map((el, index) => (
               <div ref={messagelistref} key={index} className="messages">
-                
                 {el.userId == auth.user._id ? (
-                    
-                    <div className="mymesage">
-                      
-                      <div className="df dffff">
+                  <div className="mymesage">
+                    <div className="df dffff">
                       <div>
-                      <Link className="whiteeee_font" to="/profile">
-                        <div>
-                          {auth.user.profilePicture ? <img className="comentpicter_wraper comentpicter_wraperr " src={auth.user.profilePicture} alt="" /> : <img className="comentpicter_wraper comentpicter_wraperr " src={plac} alt="" />}
-                        </div>
-                       
-                        {auth.user.firstName}
+                        <Link className="whiteeee_font" to="/profile">
+                          <div>
+                            {auth.user.profilePicture ? (
+                              <img
+                                className="comentpicter_wraper comentpicter_wraperr "
+                                src={auth.user.profilePicture}
+                                alt=""
+                              />
+                            ) : (
+                              <img
+                                className="comentpicter_wraper comentpicter_wraperr "
+                                src={plac}
+                                alt=""
+                              />
+                            )}
+                          </div>
+
+                          {auth.user.firstName}
                         </Link>
                       </div>
-                      <div className="worddd">
-                      {el.message}
-                      
-                      </div>
-                      <div className="time">
-                        {formatDate(el.date)}
-                      </div>
-                      </div>
+                      <div className="worddd">{el.message}</div>
+                      <div className="time">{formatDate(el.date)}</div>
                     </div>
-                  
+                  </div>
                 ) : (
-                  
-                    <div className="yourmesage">
-                          {/* <Helmet>
-                      <title> chat with {
-                       auth && auth.users.find((al) => al._id == el.userId) &&
-                         
-                        auth.users.find((al) => al._id == el.userId)
-                          .firstName
-                        
-                        }</title>
-                          </Helmet>  */}
-                      <div className="df dffff">
-                    <div className="he">
-                      <div>
-                      <Link className="white_font"
-                        to={`/profiles/user/${auth.users.find((al) => al._id == el.userId) && auth.users.find((al) => al._id == el.userId)._id}/u`}
-                      >
-                       
-                      {
-                         
-                      auth.users.find((al) => al._id == el.userId) &&
-                      
-                        auth.users.find((al) => al._id == el.userId)
-                          .profilePicture ? <img  className="comentpicter_wraper comentpicter_wraperr " src={auth.users.find((al) => al._id == el.userId)
-                            .profilePicture} alt=""/> : <img  className="comentpicter_wraper comentpicter_wraperr" src={plac} alt=""/>}
-                                </Link>
-                      </div>
-                      { 
-                      auth.users.find((al) => al._id == el.userId) && 
-                        <Link className="white_font"
-                        to={`/profiles/user/${auth.users.find((al) => al._id == el.userId)._id}/u`}
-                      >
-                        { 
-                        auth.users.find((al) => al._id == el.userId) &&
-                         
-                      auth.users.find((al) => al._id == el.userId)
-                        .firstName}{" "}
-                      </Link>
-                       
-                      }
-                      
-                      
-                          
-                    </div>
-                        <div className="worddd">
-                        {el.message}
-                        
+                  <div className="yourmesage">
+                    <div className="df dffff">
+                      <div className="he">
+                        <div>
+                          <Link
+                            className="white_font"
+                            to={`/profiles/user/${
+                              auth.users.find((al) => al._id == el.userId) &&
+                              auth.users.find((al) => al._id == el.userId)._id
+                            }/u`}
+                          >
+                            {auth.users.find((al) => al._id == el.userId) &&
+                            auth.users.find((al) => al._id == el.userId)
+                              .profilePicture ? (
+                              <img
+                                className="comentpicter_wraper comentpicter_wraperr "
+                                src={
+                                  auth.users.find((al) => al._id == el.userId)
+                                    .profilePicture
+                                }
+                                alt=""
+                              />
+                            ) : (
+                              <img
+                                className="comentpicter_wraper comentpicter_wraperr"
+                                src={plac}
+                                alt=""
+                              />
+                            )}
+                          </Link>
                         </div>
-                        <div className="time">
-                        {formatDate(el.date)}
+                        {auth.users.find((al) => al._id == el.userId) && (
+                          <Link
+                            className="white_font"
+                            to={`/profiles/user/${
+                              auth.users.find((al) => al._id == el.userId)._id
+                            }/u`}
+                          >
+                            {auth.users.find((al) => al._id == el.userId) &&
+                              auth.users.find((al) => al._id == el.userId)
+                                .firstName}{" "}
+                          </Link>
+                        )}
                       </div>
-                       </div>
-                       
-                       </div>
-                 
+                      <div className="worddd">{el.message}</div>
+                      <div className="time">{formatDate(el.date)}</div>
+                    </div>
+                  </div>
                 )}
-               
               </div>
-            )) : <div className="empty_chat" >chat is empty</div> }     
+            ))
+          ) : (
+            <div className="empty_chat">chat is empty</div>
+          )}
+
+         
            
-             <div  className="adminMessage">
-             {
-              adminmessages.user !== null && adminmessages.user !== auth.user._id && adminmessages.message !== undefined && adminmessages.message.length !== 0  && adminmessages.message
-              }
-                </div>           
+                
         </div>
-        
+        {adminmessages.filter((po) => po.user != auth.user._id).length !==
+              0 &&
+              adminmessages.filter((po) => po.user != auth.user._id)[0].message
+                .length !== 0 &&     <div className="adminMessage">
+              {adminmessages.filter((po) => po.user != auth.user._id)[0].message }  </div>}
         <div className="formchka">
-        <button onClick={()=> setemojipickershow(!emojipickershow)} className="buttoonnnnn"> <GrEmoji/> </button>
+          <button
+            onClick={() => setemojipickershow(!emojipickershow)}
+            className="buttoonnnnn"
+          >
+            {" "}
+            <GrEmoji />{" "}
+          </button>
           <form className="chat_formmm" onSubmit={sendMessage}>
-            {
-              emojipickershow && <Picker onEmojiClick={onEmojiClick} pickerStyle={{ position:"fixed",bottom:"18%",left:"10px"}} /> 
-            }
-          
-          
+            {emojipickershow && (
+              <Picker
+                onEmojiClick={onEmojiClick}
+                pickerStyle={{ position: "fixed", bottom: "18%", left: "10px" }}
+              />
+            )}
+
             <input
               onFocus={typing}
               onBlur={nontyping}
