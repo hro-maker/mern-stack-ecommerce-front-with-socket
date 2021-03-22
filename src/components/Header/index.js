@@ -141,9 +141,9 @@ const Header = (props) => {
 
   const renderNonLoggedInMenu = () => {
     return (
+      <>
+      {/* <Link style={{color:"white",textDecoration:'none',marginRight:"10px"}} to='/forgot'>forgot password ?</Link> */}
       <div className="for_css">
-
-        <Link style={{color:"white",textDecoration:'none',marginRight:"10px"}} to='/forgot'>forgot password ?</Link>
       <DropdownMenu
         menu={
           <a
@@ -157,7 +157,6 @@ const Header = (props) => {
           </a>
         }
         menus={[
-          
           {
             label: "Orders",
             href: `/account/orders`,
@@ -166,7 +165,6 @@ const Header = (props) => {
               !auth.authenticate && setLoginModal(true);
             },
           },
-          
         ]}
         firstMenu={
           <div className="firstmenu">
@@ -184,6 +182,7 @@ const Header = (props) => {
         }
       />
       </div>
+      </>
     );
   };
   const hendlprofileImage = (e) => {
@@ -378,9 +377,11 @@ useEffect(() => {
       
         <div className="rightMenu">
           {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
+            <div>
+           {!auth.authenticate &&  <Link className="forgot_password_head" style={{color:"white",textDecoration:'none',marginRight:"10px"}} to='/forgot'>forgot password ?</Link>}
+            </div>
+          <div> 
           
-          
-          <div>
             <Link to={`/cart`} className="cart">
               <Cart count={Object.keys(cart.cartItems).length} />
               <span style={{ margin: "0 10px" }}>Cart</span>

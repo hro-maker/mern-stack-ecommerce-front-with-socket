@@ -49,7 +49,8 @@
   margin: 20% 0;
 }
 .searchInputContainer {
-    width: 50%;
+    min-width: 50%;
+    margin-right: 0;
     position: relative;
     background: #fff;
     height: 36px;
@@ -58,7 +59,8 @@
     display: flex;
   }
 .searchInput {
-    width: 518px;
+    max-width: 518px;
+    min-width: 300px;
     border: 0;
     height: 36px;
     outline: none;
