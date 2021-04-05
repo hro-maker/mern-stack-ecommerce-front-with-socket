@@ -123,6 +123,7 @@ let sum=0,rating=0
   rating= sum/product.productDetails.reviews.length
   
  const floorrading= parseFloat(rating).toFixed(2)
+ console.log("ssss",Number.isNaN(Number(floorrading)))
  if (loading ) {
   return (
     <Loaderr/>
@@ -220,7 +221,7 @@ const getproduct=()=>{
             </p>
             <div>
               <span className="ratingCount">
-                {floorrading} <IoIosStar />
+                {Number.isNaN(Number(floorrading)) ? 0 : floorrading} <IoIosStar />
                 <ReactStars
                     count={5}
                     onChange={ratingChanged}

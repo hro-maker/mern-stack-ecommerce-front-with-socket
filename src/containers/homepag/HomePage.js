@@ -52,22 +52,6 @@ const HomePage = (props) => {
               {productes.length > 0 && productes.length > 5
                 ? randomprod(productes).map((el, i) => (
                   <>
-                    {/* <div key={i} className="main_page_item" style={{ color: "white" }}>
-                      <Link className="mainpage_item_link" to={`/${el.slug}/${el._id}/p`} >
-
-                        {
-                          el.productPictures.length > 0 &&  <div >
-                          <img className="mainpage_item_image" src={el.productPictures[0].img} alt=""/>
-                        </div>
-                        }
-                        <div className="product_informat">
-                              <div className="product_nameeee">{el && el.name}</div>
-                              <div className="product_quantity"> quantity <FaArrowRight/> {el && el.quantity}</div>
-                        </div>
-                       
-                      
-                      </Link>
-                    </div> */}
                         <div key={i} className="main_page_item_m" style={{ color: "white" }}>
                          <>
                          {
@@ -85,11 +69,15 @@ const HomePage = (props) => {
                               <div className="product_nameeee_m">{el && el.name}</div>
                               <div style={{marginTop:"7%",fontSize:"25px"}} className="product_quantity_m"> {el && el.price} <BiDollar/> </div>
                               <div style={{marginTop:"7%",fontSize:"25px",color:"yellow"}} className="rading_store">
-                              {el &&  parseFloat(
+                              {el &&  Number.isNaN(Number(parseFloat(
                                 el.reviews.reduce((t, al) => {
                                   return t + al.review;
                                 }, 0) / el.reviews.length
-                              ).toFixed(2)}<IoIosStar />
+                              ).toFixed(2))) ? 0 : parseFloat(
+                                el.reviews.reduce((t, al) => {
+                                  return t + al.review;
+                                }, 0) / el.reviews.length
+                              ).toFixed(2)  }<IoIosStar />
                               </div>
                         </div>
                        
