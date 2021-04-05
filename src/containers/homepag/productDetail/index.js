@@ -101,7 +101,6 @@ const ProductDetailsPage = (props) => {
     };
     dispatch(adreting(payload)).then(() => {
       const { productId } = props.match.params;
-      
       const payload = {
         params: {
           productId,
@@ -297,8 +296,6 @@ const getproduct=()=>{
                 }}
               >
                 {product.productDetails.coments && <PaginateComentt getproduct={getproduct} productId={props.match.params.productId} coments={product.productDetails.coments}/>}
-
-
               </div>
             </div>
           </div>
