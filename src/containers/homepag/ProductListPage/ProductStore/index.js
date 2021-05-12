@@ -74,9 +74,9 @@ const ProductStore = (props) => {
                             &nbsp;&nbsp;
                               <div className="rading_store">
                               {parseFloat(
-                                product.reviews.reduce((t, el) => {
+                               product.reviews.length ? product.reviews.reduce((t, el) => {
                                   return t + el.review;
-                                }, 0) / product.reviews.length
+                                }, 0) / product.reviews.length : 0
                               ).toFixed(2)}<IoIosStar />
                               </div>
                           </div>
