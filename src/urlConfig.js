@@ -8,3 +8,9 @@ export const chatapi= 'https://eccomers-rest-server.herokuapp.com/'
 //     return `http://localhost:2000/public/${filename}`
 // }
 // export const chatapi= 'http://localhost:2000/'
+console.log("hhagsjkdgh")
+console.log("hhagsjkdgh")
+console.log("hhagsjkdgh")
+console.log("hhagsjkdgh")
+console.log("hhagsjkdgh")
+console.log("hhagsjkdgh")
