@@ -57,11 +57,15 @@ const Search = (props) => {
                                         </div>
                                         <div className="prod_descrre">
                                         <div className="product_rating">
-                                        {parseFloat(
-                                          el.reviews.reduce((t, el) => {
-                                            return t + el.review;
-                                          }, 0) / el.reviews.length
-                                        ).toFixed(2)}<IoIosStar />
+                                        {el &&  Number.isNaN(Number(parseFloat(
+                                el.reviews.reduce((t, al) => {
+                                  return t + al.review;
+                                 }, 0) / el.reviews.length
+                              ).toFixed(2))) ? 0 : parseFloat(
+                                el.reviews.reduce((t, al) => {
+                                  return t + al.review;
+                                }, 0) / el.reviews.length
+                              ).toFixed(2)  }<IoIosStar />
 
                                         </div>
                                             <div className="namee">Product name</div>
