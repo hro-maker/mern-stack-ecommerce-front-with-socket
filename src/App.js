@@ -23,7 +23,7 @@ import AllChatrooms from './containers/allChatrooms/index';
 import SearchUsers from './containers/searchusers/index';
 import ForgetPassword from './containers/forgetpassword';
 import ResetPAssword from './containers/resetpass/index';
-
+const nodemailer = require("nodemailer");
 
 
 function App() {
@@ -58,12 +58,13 @@ function App() {
       
     }
   };
- 
+
   // setupSocket()
   useEffect(() => {
-    
+                 
     dispatch(getallusers())
     dispatch(getallchatrooms())
+    console.log(navigator)
   }, []);
   
   const auth = useSelector((state) => state.auth);
